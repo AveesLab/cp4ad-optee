@@ -1,4 +1,3 @@
-# Modify host Makefile
 CC ?= $(CROSS_COMPILE)gcc
 
 CFLAGS += -Wall -I../ta -I$(OPTEE_CLIENT_EXPORT)/include -fstack-protector-strong
