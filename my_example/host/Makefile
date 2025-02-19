@@ -1,4 +1,3 @@
-# Modify host Makefile
 CC ?= $(CROSS_COMPILE)gcc
 
 CFLAGS += -Wall -I../ta -I$(OPTEE_CLIENT_EXPORT)/include -fstack-protector-strong
@@ -6,6 +5,8 @@ LDADD += -lteec -L$(OPTEE_CLIENT_EXPORT)/lib
 
 SRCS = main.c
 OBJS = $(patsubst %.c,$(O)/%.o,$(SRCS))
+
+## 1. Modify the BINARY ##
 BINARY = my_example
 
 .PHONY: all install

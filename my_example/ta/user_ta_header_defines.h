@@ -1,13 +1,10 @@
-/*
- * Copyright (c) 2016-2017, Linaro Limited
- * All rights reserved.
- */
-
  #ifndef USER_TA_HEADER_DEFINES_H
  #define USER_TA_HEADER_DEFINES_H
  
+ // 1. Modify header file path.
  #include <ta.h>
  
+ // 2. Modify UUID name.
  #define TA_UUID				MY_EXAMPLE_UUID
  
  #define TA_FLAGS			TA_FLAG_EXEC_DDR

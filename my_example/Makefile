@@ -1,4 +1,5 @@
-# Modify TA root Makefile
+## 1. No need to modify the this Makefile.
+
 CROSS_COMPILE="${CROSS_COMPILE_AARCH64}"
 TARGET_DIR := $(notdir $(shell pwd))
 build_dir=/home/seungwoo/optee/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234
