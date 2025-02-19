@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "user_ta_header_defines.h": "c",
+        "ta_increment.h": "c"
+    }
+}
