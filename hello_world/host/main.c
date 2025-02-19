@@ -4,6 +4,7 @@
 #include <tee_client_api.h>
 // 1. Modify ta header file path
 #include "ta_hello_world.h"
+
 #include "user_ta_header_defines.h"
 
 int main(void) {
