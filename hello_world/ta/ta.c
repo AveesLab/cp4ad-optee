@@ -1,5 +1,7 @@
 #include <tee_internal_api.h>
 #include <tee_internal_api_extensions.h>
+
+// 1. Modify ta header file path.
 #include "ta.h"
 
 TEE_Result TA_CreateEntryPoint(void) {
@@ -24,6 +26,7 @@ void TA_CloseSessionEntryPoint(void *sess_ctx) {
     IMSG("세션이 닫혔습니다.");
 }
 
+// 2. Implement function here. If needed, you can create new functions.
 TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx, uint32_t cmd_id, uint32_t param_types, TEE_Param params[4]) {
     (void)sess_ctx;
     (void)param_types;

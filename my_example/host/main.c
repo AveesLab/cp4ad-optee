@@ -26,7 +26,7 @@ int main(void) {
     if (res != TEEC_SUCCESS)
         errx(1, "TEEC_OpenSession failed with code 0x%x origin 0x%x", res, err_origin);
 
-    printf("OP-TEE 세션 성공적으로 열림!\n");
+    printf("OP-TEE session opened successfully!\n");
 
     /* Execute TA command */
 
@@ -38,7 +38,7 @@ int main(void) {
     if (res != TEEC_SUCCESS)
         errx(1, "TEEC_InvokeCommand failed with code 0x%x origin 0x%x", res, err_origin);
 
-    printf("TA 명령 실행 성공!\n");
+    printf("TA command executed successfully!\n");
 
     /* Terminate session and context */
     TEEC_CloseSession(&sess);
