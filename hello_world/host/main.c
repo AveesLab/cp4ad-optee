@@ -20,7 +20,7 @@ int main(void) {
 
     /* Open OP-TEE session */
 // 2. Modify ta UUID
-    TEEC_UUID uuid = HELLO_WORLD_UUID;
+    TEEC_UUID uuid = TA_HELLO_WORLD_UUID;
 
     res = TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &err_origin);
     if (res != TEEC_SUCCESS)

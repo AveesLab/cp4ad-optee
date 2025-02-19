@@ -2,10 +2,10 @@
  #define USER_TA_HEADER_DEFINES_H
  
  // 1. Modify header file path.
- #include <ta.h>
+ #include <ta_hello_world.h>
  
  // 2. Modify UUID name.
- #define TA_UUID				MY_EXAMPLE_UUID
+ #define TA_UUID				TA_HELLO_WORLD_UUID
  
  #define TA_FLAGS			TA_FLAG_EXEC_DDR
  #define TA_STACK_SIZE			(2 * 1024)

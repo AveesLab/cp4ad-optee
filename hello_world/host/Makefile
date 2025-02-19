@@ -7,7 +7,7 @@ SRCS = main.c
 OBJS = $(patsubst %.c,$(O)/%.o,$(SRCS))
 
 ## 1. Modify the BINARY ##
-BINARY = my_example
+BINARY = hello_world
 
 .PHONY: all install
 all: $(BINARY) install
