@@ -1,16 +1,18 @@
 ## 1. No need to modify the this Makefile.
 
-CROSS_COMPILE="${CROSS_COMPILE_AARCH64}"
+CROSS_COMPILE="$(CROSS_COMPILE_AARCH64)"
 TARGET_DIR := $(notdir $(shell pwd))
-build_dir=/home/seungwoo/optee/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234
-install_dir=/home/seungwoo/optee/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/install/t234
-TA_DEV_KIT_DIR=${build_dir}/export-ta_arm64/
+build_dir=$(shell realpath $(shell pwd)/../..)/build/t234
+install_dir=$(shell realpath $(shell pwd)/../..)/install/t234
+TA_DEV_KIT_DIR=$(build_dir)/export-ta_arm64/
 # O=${build_dir}
 O=../build
-OPTEE_CLIENT_EXPORT=${install_dir}/usr
+OPTEE_CLIENT_EXPORT=$(install_dir)/usr
+MAKEFLAGS += --no-print-directory
 
 .PHONY: all
 all:
+	set -e
 	$(MAKE) -C ta \
 		CROSS_COMPILE=$(CROSS_COMPILE) \
 		TA_DEV_KIT_DIR=$(TA_DEV_KIT_DIR) \
@@ -20,6 +22,7 @@ all:
 		OPTEE_CLIENT_EXPORT=$(OPTEE_CLIENT_EXPORT) \
 		O=$(O)/ca/$(TARGET_DIR) \
 		--no-builtin-variables
+	@echo "\n[$(notdir $(shell pwd))] Make successfully done."
 
 .PHONY: clean
 clean:
