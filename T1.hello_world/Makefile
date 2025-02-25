@@ -6,10 +6,11 @@ build_dir=$(shell realpath $(shell pwd)/../..)/build/t234
 install_dir=$(shell realpath $(shell pwd)/../..)/install/t234
 TA_DEV_KIT_DIR=$(build_dir)/export-ta_arm64/
 # O=${build_dir}
-O=../build
+O=$(shell realpath $(shell pwd)/build)
 OPTEE_CLIENT_EXPORT=$(install_dir)/usr
 MAKEFLAGS += --no-print-directory
-
+TA_INSTALL_DIR=/lib/optee_armtz/
+CA_EXE_DIR=/usr/sbin/
 .PHONY: all
 all:
 	set -e
@@ -23,6 +24,12 @@ all:
 		O=$(O)/ca/$(TARGET_DIR) \
 		--no-builtin-variables
 	@echo "\n[$(notdir $(shell pwd))] Make successfully done."
+
+.PHONY: install
+install:
+	sudo cp $(O)/ta/$(TARGET_DIR)/*.ta $(TA_INSTALL_DIR)
+	sudo cp $(O)/ca/$(TARGET_DIR)/* $(CA_EXE_DIR)
+	@echo "Install complete."
 
 .PHONY: clean
 clean:

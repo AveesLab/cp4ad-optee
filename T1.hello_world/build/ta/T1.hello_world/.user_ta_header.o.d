@@ -1,4 +1,4 @@
-../build/ta/T1.hello_world/user_ta_header.o: \
+/home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o: \
  /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/src/user_ta_header.c \
  /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/include/compiler.h \
  /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/include/config.h \

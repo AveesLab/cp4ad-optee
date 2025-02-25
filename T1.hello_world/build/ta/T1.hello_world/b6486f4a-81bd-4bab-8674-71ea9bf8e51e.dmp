@@ -1,6 +1,6 @@
 
-../build/ta/T1.hello_world/b6486f4a-81bd-4bab-8674-71ea9bf8e51e.elf:     file format elf64-littleaarch64
-../build/ta/T1.hello_world/b6486f4a-81bd-4bab-8674-71ea9bf8e51e.elf
+/home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/b6486f4a-81bd-4bab-8674-71ea9bf8e51e.elf:     file format elf64-littleaarch64
+/home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/b6486f4a-81bd-4bab-8674-71ea9bf8e51e.elf
 architecture: aarch64, flags 0x00000150:
 HAS_SYMS, DYNAMIC, D_PAGED
 start address 0x0000000000000134

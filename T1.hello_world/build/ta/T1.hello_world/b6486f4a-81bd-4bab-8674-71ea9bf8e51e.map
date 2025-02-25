@@ -1,9 +1,9 @@
 Archive member included to satisfy reference by file (symbol)
 
 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
-                              ../build/ta/T1.hello_world/user_ta_header.o (__utee_entry)
+                              /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o (__utee_entry)
 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(utee_syscalls_a64.o)
-                              ../build/ta/T1.hello_world/user_ta_header.o (_utee_return)
+                              /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o (_utee_return)
 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(abort.o)
                               /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o) (abort)
 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(trace_ext.o)
@@ -62,11 +62,11 @@ Archive member included to satisfy reference by file (symbol)
 Allocating common symbols
 Common symbol       size              file
 
-ta_heap             0x8000            ../build/ta/T1.hello_world/user_ta_header.o
+ta_heap             0x8000            /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
 ta_param_types      0x4               /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
 __ta_no_share_malloc_ctx
                     0x8               /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
-__ta_no_share_heap  0x0               ../build/ta/T1.hello_world/user_ta_header.o
+__ta_no_share_heap  0x0               /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
 ta_params           0x40              /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
 __elf_phdr_info     0x10              /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
 mbedtls_mpi_mempool
@@ -74,53 +74,53 @@ mbedtls_mpi_mempool
 
 Discarded input sections
 
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/ta_hello_world.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .group         0x0000000000000000        0xc ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000      0x112 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000      0x174 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0x7c ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000      0x1a0 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0xc4 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0x22 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000      0xcf1 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0x35 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0x58 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0x34 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0x79 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0xfd ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000000000       0x16 ../build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000      0x112 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000      0x174 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0x7c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000      0x1a0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0xc4 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0x22 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000      0xcf1 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0x35 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0x58 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0x34 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0x79 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0xfd /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0x16 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .group         0x0000000000000000        0xc /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
@@ -826,7 +826,7 @@ Linker script and memory map
 
 .ta_head        0x0000000000000000       0x20
  *(SORT_BY_ALIGNMENT(.ta_head))
- .ta_head       0x0000000000000000       0x20 ../build/ta/T1.hello_world/user_ta_header.o
+ .ta_head       0x0000000000000000       0x20 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
                 0x0000000000000000                ta_head
 
 .text           0x0000000000000020     0xc5f4
@@ -834,13 +834,13 @@ Linker script and memory map
  *(SORT_BY_ALIGNMENT(.text) SORT_BY_ALIGNMENT(.text.*))
  .text          0x0000000000000020       0xec /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(memcpy.o)
                 0x0000000000000020                memcpy
- .text          0x000000000000010c       0x28 ../build/ta/T1.hello_world/ta_hello_world.o
+ .text          0x000000000000010c       0x28 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
                 0x000000000000010c                TA_CreateEntryPoint
                 0x0000000000000114                TA_DestroyEntryPoint
                 0x0000000000000118                TA_OpenSessionEntryPoint
                 0x0000000000000120                TA_CloseSessionEntryPoint
                 0x0000000000000124                TA_InvokeCommandEntryPoint
- .text          0x0000000000000134       0x1c ../build/ta/T1.hello_world/user_ta_header.o
+ .text          0x0000000000000134       0x1c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
                 0x0000000000000134                __ta_entry
                 0x0000000000000148                tahead_get_trace_level
  .text          0x0000000000000150      0x74c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
@@ -1289,7 +1289,7 @@ Linker script and memory map
 
 .plt            0x000000000000c614        0x0
  *(SORT_BY_ALIGNMENT(.plt))
- .plt           0x000000000000c614        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+ .plt           0x000000000000c614        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .eh_frame_hdr
  *(SORT_BY_ALIGNMENT(.eh_frame_hdr))
@@ -1297,8 +1297,8 @@ Linker script and memory map
 
 .eh_frame       0x000000000000c618     0x2824
  *(SORT_BY_ALIGNMENT(.eh_frame))
- .eh_frame      0x000000000000c618       0x78 ../build/ta/T1.hello_world/ta_hello_world.o
- .eh_frame      0x000000000000c690       0x30 ../build/ta/T1.hello_world/user_ta_header.o
+ .eh_frame      0x000000000000c618       0x78 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .eh_frame      0x000000000000c690       0x30 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
                                          0x40 (size before relaxing)
  .eh_frame      0x000000000000c6c0      0x150 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
                                         0x168 (size before relaxing)
@@ -1365,7 +1365,7 @@ Linker script and memory map
  *(SORT_BY_ALIGNMENT(.gnu.linkonce.r.*))
  *(SORT_BY_ALIGNMENT(.rodata) SORT_BY_ALIGNMENT(.rodata.*))
  .rodata.user_ta_header.c
-                0x000000000000ee40       0x33 ../build/ta/T1.hello_world/user_ta_header.o
+                0x000000000000ee40       0x33 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
                 0x000000000000ee40                ta_num_props
                 0x000000000000ee60                __ta_no_share_heap_size
                 0x000000000000ee68                ta_heap_size
@@ -1386,7 +1386,7 @@ Linker script and memory map
  .rodata.lib/libutils/ext/snprintk.c
                 0x000000000000f1f8       0xac /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(snprintk.o)
  .rodata.str1.1.user_ta_header.c
-                0x000000000000f2a4      0x15f ../build/ta/T1.hello_world/user_ta_header.o
+                0x000000000000f2a4      0x15f /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .rodata.str1.1.lib/libutee/user_ta_entry.c
                 0x000000000000f403       0x4f /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .rodata.lib/libutee/user_ta_entry.c
@@ -1437,17 +1437,17 @@ Linker script and memory map
 
 .gnu.version_d  0x00000000000100a0        0x0
  .gnu.version_d
-                0x00000000000100a0        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+                0x00000000000100a0        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .gnu.version    0x00000000000100a0        0x0
- .gnu.version   0x00000000000100a0        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+ .gnu.version   0x00000000000100a0        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .gnu.version_r  0x00000000000100a0        0x0
  .gnu.version_r
-                0x00000000000100a0        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+                0x00000000000100a0        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .gnu.hash       0x00000000000100a0       0x30
- .gnu.hash      0x00000000000100a0       0x30 ../build/ta/T1.hello_world/ta_hello_world.o
+ .gnu.hash      0x00000000000100a0       0x30 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .ARM.extab
  *(SORT_BY_ALIGNMENT(.ARM.extab*) SORT_BY_ALIGNMENT(.gnu.linkonce.armextab.*))
@@ -1465,31 +1465,31 @@ Linker script and memory map
 
 .dynsym         0x00000000000100d0       0x90
  *(SORT_BY_ALIGNMENT(.dynsym))
- .dynsym        0x00000000000100d0       0x90 ../build/ta/T1.hello_world/ta_hello_world.o
+ .dynsym        0x00000000000100d0       0x90 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .dynstr         0x0000000000010160       0x2e
  *(SORT_BY_ALIGNMENT(.dynstr))
- .dynstr        0x0000000000010160       0x2e ../build/ta/T1.hello_world/ta_hello_world.o
+ .dynstr        0x0000000000010160       0x2e /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .hash           0x0000000000010190       0x2c
  *(SORT_BY_ALIGNMENT(.hash))
- .hash          0x0000000000010190       0x2c ../build/ta/T1.hello_world/ta_hello_world.o
+ .hash          0x0000000000010190       0x2c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .rela.dyn       0x00000000000101c0      0x348
  .rela.data.rel.ro
-                0x00000000000101c0        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
- .rela.ifunc    0x00000000000101c0        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+                0x00000000000101c0        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .rela.ifunc    0x00000000000101c0        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
  .rela.data.rel.ro.local
-                0x00000000000101c0      0x2d0 ../build/ta/T1.hello_world/ta_hello_world.o
+                0x00000000000101c0      0x2d0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
  .rela.data.rel.local
-                0x0000000000010490       0x60 ../build/ta/T1.hello_world/ta_hello_world.o
+                0x0000000000010490       0x60 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
  .rela.data.rel
-                0x00000000000104f0       0x18 ../build/ta/T1.hello_world/ta_hello_world.o
+                0x00000000000104f0       0x18 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
                 0x0000000000011000                . = ALIGN (0x1000)
 
 .dynamic        0x0000000000011000      0x110
  *(SORT_BY_ALIGNMENT(.dynamic))
- .dynamic       0x0000000000011000      0x110 ../build/ta/T1.hello_world/ta_hello_world.o
+ .dynamic       0x0000000000011000      0x110 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
                 0x0000000000011000                _DYNAMIC
 
 .tdata
@@ -1501,9 +1501,9 @@ Linker script and memory map
 
 .got            0x0000000000011110       0xc0
  *(SORT_BY_ALIGNMENT(.got.plt))
- .got.plt       0x0000000000011110       0x18 ../build/ta/T1.hello_world/ta_hello_world.o
+ .got.plt       0x0000000000011110       0x18 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
  *(SORT_BY_ALIGNMENT(.got))
- .got           0x0000000000011128       0xa8 ../build/ta/T1.hello_world/ta_hello_world.o
+ .got           0x0000000000011128       0xa8 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
                 0x0000000000011128                _GLOBAL_OFFSET_TABLE_
 
 .rel.text
@@ -1550,7 +1550,7 @@ Linker script and memory map
 
 .rela.got       0x00000000000111d0      0x1e0
  *(SORT_BY_ALIGNMENT(.rela.got))
- .rela.got      0x00000000000111d0      0x1e0 ../build/ta/T1.hello_world/ta_hello_world.o
+ .rela.got      0x00000000000111d0      0x1e0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .rel.ctors
  *(SORT_BY_ALIGNMENT(.rel.ctors))
@@ -1581,19 +1581,19 @@ Linker script and memory map
 
 .rela.bss       0x00000000000113b0        0x0
  *(SORT_BY_ALIGNMENT(.rela.bss))
- .rela.bss      0x00000000000113b0        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+ .rela.bss      0x00000000000113b0        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .rel.plt
  *(SORT_BY_ALIGNMENT(.rel.plt))
 
 .rela.plt       0x00000000000113b0        0x0
  *(SORT_BY_ALIGNMENT(.rela.plt))
- .rela.plt      0x00000000000113b0        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+ .rela.plt      0x00000000000113b0        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 .data           0x00000000000113b0      0x1cc
  *(SORT_BY_ALIGNMENT(.data) SORT_BY_ALIGNMENT(.data.*) SORT_BY_ALIGNMENT(.gnu.linkonce.d.*))
  .data.rel.ro.local
-                0x00000000000113b0      0x108 ../build/ta/T1.hello_world/user_ta_header.o
+                0x00000000000113b0      0x108 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
                 0x00000000000113b0                ta_props
  .data.rel.local
                 0x00000000000114b8       0x20 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
@@ -1605,10 +1605,10 @@ Linker script and memory map
                 0x0000000000011540       0x30 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(bget_malloc.o)
  .data          0x0000000000011570        0x8 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(stack_check.o)
                 0x0000000000011570                __stack_chk_guard
- .data          0x0000000000011578        0x4 ../build/ta/T1.hello_world/user_ta_header.o
+ .data          0x0000000000011578        0x4 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
                 0x0000000000011578                trace_level
- .data          0x000000000001157c        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
- .data.rel.ro   0x000000000001157c        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+ .data          0x000000000001157c        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .data.rel.ro   0x000000000001157c        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
  .data          0x000000000001157c        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .data          0x000000000001157c        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(utee_syscalls_a64.o)
  .data          0x000000000001157c        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(abort.o)
@@ -1653,9 +1653,9 @@ Linker script and memory map
  .bss           0x0000000000015608       0x10 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(tcb.o)
  COMMON         0x0000000000015618        0x8 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libmbedtls.a(bignum.o)
                 0x0000000000015618                mbedtls_mpi_mempool
- .bss           0x0000000000015620        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
- .bss           0x0000000000015620        0x0 ../build/ta/T1.hello_world/user_ta_header.o
- COMMON         0x0000000000015620     0x8000 ../build/ta/T1.hello_world/user_ta_header.o
+ .bss           0x0000000000015620        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .bss           0x0000000000015620        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ COMMON         0x0000000000015620     0x8000 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
                 0x0000000000015620                ta_heap
                 0x000000000001d620                __ta_no_share_heap
  .bss           0x000000000001d620        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(utee_syscalls_a64.o)
@@ -1688,12 +1688,12 @@ Linker script and memory map
                 0x000000000001d620                __ftrace_buf_end = .
 
 .dynbss         0x000000000001d620        0x0
- .dynbss        0x000000000001d620        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+ .dynbss        0x000000000001d620        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
 
 /DISCARD/
  *(SORT_BY_ALIGNMENT(.interp))
-LOAD ../build/ta/T1.hello_world/ta_hello_world.o
-LOAD ../build/ta/T1.hello_world/user_ta_header.o
+LOAD /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+LOAD /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
 START GROUP
 LOAD /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a
 LOAD /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a
@@ -1702,12 +1702,12 @@ LOAD /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-op
 END GROUP
 LOAD /usr/lib/gcc/aarch64-linux-gnu/9/libgcc.a
 LOAD /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a
-OUTPUT(../build/ta/T1.hello_world/b6486f4a-81bd-4bab-8674-71ea9bf8e51e.elf elf64-littleaarch64)
+OUTPUT(/home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/b6486f4a-81bd-4bab-8674-71ea9bf8e51e.elf elf64-littleaarch64)
 LOAD linker stubs
 
 .debug_info     0x0000000000000000    0x19847
- .debug_info    0x0000000000000000      0x29f ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_info    0x000000000000029f      0x5da ../build/ta/T1.hello_world/user_ta_header.o
+ .debug_info    0x0000000000000000      0x29f /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_info    0x000000000000029f      0x5da /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .debug_info    0x0000000000000879     0x1825 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .debug_info    0x000000000000209e       0x22 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(utee_syscalls_a64.o)
  .debug_info    0x00000000000020c0      0x146 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(abort.o)
@@ -1739,8 +1739,8 @@ LOAD linker stubs
  .debug_info    0x0000000000019741      0x106 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(memchr.o)
 
 .debug_abbrev   0x0000000000000000     0x3feb
- .debug_abbrev  0x0000000000000000      0x161 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_abbrev  0x0000000000000161      0x1f8 ../build/ta/T1.hello_world/user_ta_header.o
+ .debug_abbrev  0x0000000000000000      0x161 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_abbrev  0x0000000000000161      0x1f8 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .debug_abbrev  0x0000000000000359      0x51d /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .debug_abbrev  0x0000000000000876       0x12 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(utee_syscalls_a64.o)
  .debug_abbrev  0x0000000000000888       0xdd /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(abort.o)
@@ -1772,8 +1772,8 @@ LOAD linker stubs
  .debug_abbrev  0x0000000000003f39       0xb2 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(memchr.o)
 
 .debug_loc      0x0000000000000000    0x23d13
- .debug_loc     0x0000000000000000       0x7a ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_loc     0x000000000000007a      0x132 ../build/ta/T1.hello_world/user_ta_header.o
+ .debug_loc     0x0000000000000000       0x7a /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_loc     0x000000000000007a      0x132 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .debug_loc     0x00000000000001ac     0x1007 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .debug_loc     0x00000000000011b3      0x1c4 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(trace_ext.o)
  .debug_loc     0x0000000000001377     0x2fb7 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(tee_api.o)
@@ -1803,9 +1803,9 @@ LOAD linker stubs
 
 .debug_aranges  0x0000000000000000      0x950
  .debug_aranges
-                0x0000000000000000       0x30 ../build/ta/T1.hello_world/ta_hello_world.o
+                0x0000000000000000       0x30 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
  .debug_aranges
-                0x0000000000000030       0x30 ../build/ta/T1.hello_world/user_ta_header.o
+                0x0000000000000030       0x30 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .debug_aranges
                 0x0000000000000060       0x30 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .debug_aranges
@@ -1866,29 +1866,29 @@ LOAD linker stubs
                 0x0000000000000920       0x30 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(memchr.o)
 
 .debug_macro    0x0000000000000000    0x179c8
- .debug_macro   0x0000000000000000       0xda ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x00000000000000da      0x9a6 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000000a80      0x112 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000000b92      0x174 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000000d06      0xcf1 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x00000000000019f7       0x7c ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001a73      0x1a0 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001c13       0xc4 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001cd7       0x22 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001cf9       0x35 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001d2e       0x58 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001d86       0x34 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001dba       0x79 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001e33       0xfd ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001f30       0x16 ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_macro   0x0000000000001f46      0x180 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x00000000000020c6      0x9a6 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000002a6c       0x2e ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000002a9a       0x2e ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000002ac8       0x33 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000002afb       0xf0 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000002beb       0x88 ../build/ta/T1.hello_world/user_ta_header.o
- .debug_macro   0x0000000000002c73       0x2e ../build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000000000       0xda /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x00000000000000da      0x9a6 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000000a80      0x112 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000000b92      0x174 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000000d06      0xcf1 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x00000000000019f7       0x7c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001a73      0x1a0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001c13       0xc4 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001cd7       0x22 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001cf9       0x35 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001d2e       0x58 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001d86       0x34 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001dba       0x79 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001e33       0xfd /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001f30       0x16 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_macro   0x0000000000001f46      0x180 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x00000000000020c6      0x9a6 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000002a6c       0x2e /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000002a9a       0x2e /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000002ac8       0x33 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000002afb       0xf0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000002beb       0x88 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
+ .debug_macro   0x0000000000002c73       0x2e /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .debug_macro   0x0000000000002ca1      0x20b /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .debug_macro   0x0000000000002eac      0x976 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .debug_macro   0x0000000000003822      0x5ad /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
@@ -1977,8 +1977,8 @@ LOAD linker stubs
  .debug_macro   0x0000000000017052      0x976 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(memchr.o)
 
 .debug_line     0x0000000000000000     0xeb07
- .debug_line    0x0000000000000000      0x24e ../build/ta/T1.hello_world/ta_hello_world.o
- .debug_line    0x000000000000024e      0x35a ../build/ta/T1.hello_world/user_ta_header.o
+ .debug_line    0x0000000000000000      0x24e /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
+ .debug_line    0x000000000000024e      0x35a /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .debug_line    0x00000000000005a8      0xa60 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .debug_line    0x0000000000001008      0x53c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(utee_syscalls_a64.o)
  .debug_line    0x0000000000001544      0x29f /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(abort.o)
@@ -2010,9 +2010,9 @@ LOAD linker stubs
  .debug_line    0x000000000000e96b      0x19c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(memchr.o)
 
 .debug_str      0x0000000000000000    0x1a8bb
- .debug_str     0x0000000000000000     0x9586 ../build/ta/T1.hello_world/ta_hello_world.o
+ .debug_str     0x0000000000000000     0x9586 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
                                        0x9715 (size before relaxing)
- .debug_str     0x0000000000009586     0x152e ../build/ta/T1.hello_world/user_ta_header.o
+ .debug_str     0x0000000000009586     0x152e /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
                                        0xabc7 (size before relaxing)
  .debug_str     0x000000000000aab4     0x8f48 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
                                       0x13768 (size before relaxing)
@@ -2074,9 +2074,9 @@ LOAD linker stubs
                                        0x4a4a (size before relaxing)
 
 .comment        0x0000000000000000       0x2b
- .comment       0x0000000000000000       0x2b ../build/ta/T1.hello_world/ta_hello_world.o
+ .comment       0x0000000000000000       0x2b /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
                                          0x2c (size before relaxing)
- .comment       0x000000000000002b       0x2c ../build/ta/T1.hello_world/user_ta_header.o
+ .comment       0x000000000000002b       0x2c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .comment       0x000000000000002b       0x2c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .comment       0x000000000000002b       0x2c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(abort.o)
  .comment       0x000000000000002b       0x2c /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(trace_ext.o)
@@ -2109,9 +2109,9 @@ LOAD linker stubs
 .note.GNU-stack
                 0x0000000000000000        0x0
  .note.GNU-stack
-                0x0000000000000000        0x0 ../build/ta/T1.hello_world/ta_hello_world.o
+                0x0000000000000000        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/ta_hello_world.o
  .note.GNU-stack
-                0x0000000000000000        0x0 ../build/ta/T1.hello_world/user_ta_header.o
+                0x0000000000000000        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .note.GNU-stack
                 0x0000000000000000        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .note.GNU-stack
@@ -2170,7 +2170,7 @@ LOAD linker stubs
                 0x0000000000000000        0x0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutils.a(memchr.o)
 
 .debug_ranges   0x0000000000000000     0x1d30
- .debug_ranges  0x0000000000000000       0x20 ../build/ta/T1.hello_world/user_ta_header.o
+ .debug_ranges  0x0000000000000000       0x20 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/cp4ad-optee/T1.hello_world/build/ta/T1.hello_world/user_ta_header.o
  .debug_ranges  0x0000000000000020      0x1b0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(user_ta_entry.o)
  .debug_ranges  0x00000000000001d0      0x3b0 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(utee_syscalls_a64.o)
  .debug_ranges  0x0000000000000580       0x20 /home/avees/optee_local_build/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/lib/libutee.a(abort.o)
