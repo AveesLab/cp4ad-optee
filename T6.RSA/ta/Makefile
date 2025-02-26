@@ -1,4 +1,4 @@
 ## 1. Modify BINARY (UUID)
-BINARY=e64ec340-ed6e-4dce-aa40-e5d3e0e1c8fa
+BINARY=22d6a5db-534e-4fd7-b3dc-44fdf753ee19
 
 include $(TA_DEV_KIT_DIR)/mk/ta_dev_kit.mk
