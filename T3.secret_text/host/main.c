@@ -103,13 +103,13 @@ void direct_access() {
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         printf("\nUsage: %s <mode>\n", argv[0]);
-        printf("  1 - TA Access (InvokeCommand)\n");
-        printf("  2 - Direct Access (Memory address access, may cause Segmentation Fault)\n");
+        printf("  0 - TA Access (InvokeCommand)\n");
+        printf("  1 - Direct Access (Memory address access, may cause Segmentation Fault)\n");
     } else {
         int mode = atoi(argv[1]);
-        if (mode == 1) {
+        if (mode == 0) {
             ta_access();
-        } else if (mode == 2) {
+        } else if (mode == 1) {
             direct_access();
         } else {
             printf("Invalid mode! Use 1 for TA access, 2 for direct access.\n");

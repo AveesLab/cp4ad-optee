@@ -11,4 +11,8 @@
 #define CMD_OPTEE_CRYPTO 0
 #define CMD_SAVE_KEY 1
 
+// TEE_Result save_aes_key(uint8_t *key, size_t key_size);
+// TEE_Result load_aes_key(uint8_t *key, size_t key_size);
+// TEE_Result decrypt_data(uint8_t *ciphertext, size_t size, uint8_t *plaintext);
+
 #endif

@@ -13,10 +13,10 @@ BINARY = optee_crypto save_key
 all: $(BINARY) install
 
 save_key: $(O)/save_key.o
-	$(CC) -o $@ $^ $(LDADD)
+	$(CC) -o $(O)/$@ $^ $(LDADD)
 
 optee_crypto: $(O)/main.o
-	$(CC) -o $@ $^ $(LDADD)
+	$(CC) -o $(O)/$@ $^ $(LDADD)
 
 $(O)/%.o: ./%.c
 	mkdir -p $(O)
@@ -24,7 +24,7 @@ $(O)/%.o: ./%.c
 
 install: $(BINARY)
 	mkdir -p $(OPTEE_CLIENT_EXPORT)/sbin
-	for bin in $(BINARY); do cp $$bin $(OPTEE_CLIENT_EXPORT)/sbin/; done
+	for bin in $(BINARY); do cp $(O)/$$bin $(OPTEE_CLIENT_EXPORT)/sbin/; done
 
 
 .PHONY: clean
