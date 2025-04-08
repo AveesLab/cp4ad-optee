@@ -1,6 +1,14 @@
 {
     "files.associations": {
         "user_ta_header_defines.h": "c",
-        "ta_increment.h": "c"
-    }
+        "ta_increment.h": "c",
+        "aes.h": "c",
+        "ta_optee_crypto.h": "c",
+        "ta_rsa.h": "c",
+        "rsa.h": "c",
+        "tee_client_api.h": "c",
+        "ta_hello_world.h": "c"
+    },
+    "codesnap.transparentBackground": true,
+    "codesnap.showWindowControls": false
 }

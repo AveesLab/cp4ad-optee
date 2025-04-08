@@ -32,7 +32,7 @@ void TA_CloseSessionEntryPoint(void *sess_ctx) {
     IMSG("Session closed.");
 }
 
-// ✅ Secure Storage에 AES 키 저장
+// Secure Storage에 AES 키 저장
 TEE_Result save_aes_key(uint8_t *key, size_t key_size) {
     TEE_ObjectHandle object;
     TEE_Result res;
@@ -49,7 +49,7 @@ TEE_Result save_aes_key(uint8_t *key, size_t key_size) {
     return TEE_SUCCESS;
 }
 
-// ✅ Secure Storage에서 AES 키 불러오기
+// Secure Storage에서 AES 키 불러오기
 TEE_Result load_aes_key(uint8_t *key, size_t key_size) {
     TEE_ObjectHandle object;
     TEE_Result res;
@@ -71,7 +71,7 @@ TEE_Result load_aes_key(uint8_t *key, size_t key_size) {
     return TEE_SUCCESS;
 }
 
-// ✅ 저장된 AES 키를 불러와서 복호화 수행
+// 저장된 AES 키를 불러와서 복호화 수행
 TEE_Result crypt_data(uint8_t *ciphertext, size_t size, uint8_t *plaintext) {
     uint8_t aes_key[AES_KEY_SIZE];
     uint8_t nonce[AES_BLOCK_SIZE] = "abcdef1234567890";  // Nonce 값 (랜덤하게 설정해야 함)
@@ -107,7 +107,7 @@ TEE_Result crypt_data(uint8_t *ciphertext, size_t size, uint8_t *plaintext) {
     return TEE_SUCCESS;
 }
 
-// ✅ TEE 내부 명령어 처리
+// TEE 내부 명령어 처리
 TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx, uint32_t cmd_id, uint32_t param_types,
                                       TEE_Param params[4]) {
     if (cmd_id == CMD_SAVE_KEY) {
