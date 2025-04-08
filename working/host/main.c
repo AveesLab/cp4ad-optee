@@ -13,7 +13,6 @@ int main(void) {
     TEEC_Result res;
     TEEC_Operation op;
     uint32_t err_origin;
-
     /* Initialize OP-TEE context */
     res = TEEC_InitializeContext(NULL, &ctx);
     if (res != TEEC_SUCCESS)

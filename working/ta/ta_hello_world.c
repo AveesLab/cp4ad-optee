@@ -1,8 +1,11 @@
 #include <tee_internal_api.h>
 #include <tee_internal_api_extensions.h>
 #include "ta_hello_world.h"
+#include <trace.h>
 
 TEE_Result TA_CreateEntryPoint(void) {
+    IMSG("ii");
+    DMSG("dd");
     return TEE_SUCCESS;
 }
 
