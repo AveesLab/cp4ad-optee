@@ -5,7 +5,7 @@
  #include <ta_hello_world.h>
  
  // 2. Modify UUID name.
- #define TA_UUID				TA_HELLO_WORLD_UUID
+ #define TA_UUID				TA_INCREMENT_UUID
  
  #define TA_FLAGS			TA_FLAG_EXEC_DDR
  #define TA_STACK_SIZE			(2 * 1024)

@@ -1,7 +1,5 @@
 #include <tee_internal_api.h>
 #include <tee_internal_api_extensions.h>
-
-// 1. Modify ta header file path.
 #include "ta.h"
 
 TEE_Result TA_CreateEntryPoint(void) {
@@ -33,8 +31,13 @@ TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx, uint32_t cmd_id, uint32_t 
     (void)params;
 
     switch (cmd_id) {
-    case CMD_HELLO:
-    IMSG("Hello OP-TEE!");
+    case CMD_INCREMENT:
+    IMSG("Incrementing...");
+        params[0].value.a++;
+        return TEE_SUCCESS;
+    case CMD_DECREMENT:
+    IMSG("Decrementing...");
+        params[0].value.a--;
         return TEE_SUCCESS;
     default:
         return TEE_ERROR_BAD_PARAMETERS;
