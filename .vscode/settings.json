@@ -7,7 +7,9 @@
         "ta_rsa.h": "c",
         "rsa.h": "c",
         "tee_client_api.h": "c",
-        "ta_hello_world.h": "c"
+        "ta_hello_world.h": "c",
+        "type_traits": "c",
+        "ta.h": "c"
     },
     "codesnap.transparentBackground": true,
     "codesnap.showWindowControls": false

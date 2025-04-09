@@ -1,0 +1,12 @@
+#ifndef __TA_H__
+#define __TA_H__
+
+// 1. Modify UUID.
+#define TA_UUID	\
+		{ 0x343594e3, 0xd3a3, 0x43e8, \
+		{ 0x93, 0x0a, 0x70, 0x60, 0x57, 0xd3, 0x89, 0x57} }
+
+// 2. Set Command ID.
+#define CMD_INCREMENT	0
+#endif
+

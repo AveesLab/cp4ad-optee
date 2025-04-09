@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <err.h>
 #include <tee_client_api.h>
 #include "ta.h"
@@ -8,14 +9,11 @@
 int main(void) {
     TEEC_Context ctx;
     TEEC_Session sess;
-    TEEC_Result res;
     TEEC_Operation op;
     uint32_t err_origin;
 
     /* Initialize OP-TEE context */
-    res = TEEC_InitializeContext(NULL, &ctx);
-    if (res != TEEC_SUCCESS)
-        errx(1, "TEEC_InitializeContext failed with code 0x%x", res);
+    TEEC_InitializeContext(NULL, &ctx);
     /* Open OP-TEE session */
 // 2. Modify ta UUID
     TEEC_UUID uuid = TA_UUID;
