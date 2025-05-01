@@ -1,42 +1,38 @@
-## 1. No need to modify the this Makefile.
+# No Need to modify this file.
 
-CROSS_COMPILE="${CROSS_COMPILE_AARCH64}"
 TARGET_DIR := $(notdir $(shell pwd))
-build_dir=$(shell realpath $(shell pwd)/../..)/build/t234
-install_dir=$(shell realpath $(shell pwd)/../..)/install/t234
-TA_DEV_KIT_DIR=${build_dir}/export-ta_arm64/
-# O=${build_dir}
-O=$(shell realpath $(shell pwd)/build)
-OPTEE_CLIENT_EXPORT=${install_dir}/usr
-MAKEFLAGS += --no-print-directory
-TA_INSTALL_DIR=/lib/optee_armtz/
-CA_EXE_DIR=/usr/sbin/
-.PHONY: all
-all:
-	$(MAKE) -C ta \
-		CROSS_COMPILE=$(CROSS_COMPILE) \
-		TA_DEV_KIT_DIR=$(TA_DEV_KIT_DIR) \
-		O=$(O)/ta/$(TARGET_DIR)
-	$(MAKE) -C host \
-		CROSS_COMPILE=$(CROSS_COMPILE) \
-		OPTEE_CLIENT_EXPORT=$(OPTEE_CLIENT_EXPORT) \
-		O=$(O)/ca/$(TARGET_DIR) \
-		--no-builtin-variables
 
-.PHONY: install
+build_dir := /home/avees/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234
+install_dir := /home/avees/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/install/t234
+
+TA_DEV_KIT_DIR := $(build_dir)/export-ta_arm64/
+O ?= build
+OPTEE_CLIENT_EXPORT := $(install_dir)/usr
+
+MAKEFLAGS += --no-print-directory
+
+TA_INSTALL_DIR := /lib/optee_armtz/
+CA_EXE_DIR := /usr/sbin/
+
+.PHONY: all install clean ta host
+
+all: ta host
+	@echo "\n[$(notdir $(shell pwd))] Build successfully done."
+
+ta:
+	@echo "[building TA...]"
+	$(MAKE) -C ta TA_DEV_KIT_DIR=$(TA_DEV_KIT_DIR) O=../build/ta
+
+host:
+	@echo "\n[building HOST...]"
+	$(MAKE) -C host OPTEE_CLIENT_EXPORT=$(OPTEE_CLIENT_EXPORT) O=../build/host --no-builtin-variables
+
 install:
-	sudo cp $(O)/ta/$(TARGET_DIR)/*.ta $(TA_INSTALL_DIR)
-	sudo cp $(O)/ca/$(TARGET_DIR)/* $(CA_EXE_DIR)
-	@echo "Install complete."
-	
-.PHONY: clean
+	@echo "[installing TA...]"
+	sudo cp build/ta/*.ta $(TA_INSTALL_DIR)
+	@echo "[installing HOST...]"
+	sudo cp build/host/* $(CA_EXE_DIR)
+	@echo "\n[$(notdir $(shell pwd))] Install complete."
+
 clean:
-	$(MAKE) -C ta \
-		TA_DEV_KIT_DIR=$(TA_DEV_KIT_DIR) \
-		O=$(O)/ta/$(TARGET_DIR) \
-		clean
-	$(MAKE) -C host \
-		OPTEE_CLIENT_EXPORT=$(OPTEE_CLIENT_EXPORT) \
-		O=$(O)/ca/$(TARGET_DIR) \
-		clean
-	rm -rf $(O)/ca/$(TARGET_DIR)
+	rm -rf build

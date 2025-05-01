@@ -2,8 +2,8 @@
 
 TARGET_DIR := $(notdir $(shell pwd))
 
-build_dir := $(shell realpath $(shell pwd)/../..)/build/t234
-install_dir := $(shell realpath $(shell pwd)/../..)/install/t234
+build_dir := /home/avees/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234
+install_dir := /home/avees/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/install/t234
 
 TA_DEV_KIT_DIR := $(build_dir)/export-ta_arm64/
 O ?= build
