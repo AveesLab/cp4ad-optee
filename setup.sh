@@ -9,16 +9,20 @@ echo "export CROSS_COMPILE_AARCH64=\$CROSS_COMPILE_AARCH64_PATH/bin/" >> ~/.bash
 echo "export UEFI_STMM_PATH=~/Linux_for_Tegra/bootloader/standalonemm_optee_t234.bin" >> ~/.bashrc
 source ~/.bashrc
 
+echo "!!!!!!!!!!!  build atf  !!!!!!!!!!!!"
 cd ~/Linux_for_Tegra/sources/tegra/optee-src/atf/arm-trusted-firmware
 make BUILD_BASE=./build \
 CROSS_COMPILE="${CROSS_COMPILE_AARCH64}" \
 DEBUG=0 LOG_LEVEL=20 PLAT=tegra SPD=opteed TARGET_SOC=t234 V=0
 
+echo "!!!!!!!!!!!  build optee  !!!!!!!!!!!!"
+sudo apt install pip
 pip install --upgrade cryptography
 cd ~/Linux_for_Tegra/sources/tegra/optee-src/nv-optee
 sudo apt install python3-pyelftools
 ./optee_src_build.sh -p t234
 
+echo "!!!!!!!!!!!  dtc  !!!!!!!!!!!!"
 cd ~/Linux_for_Tegra/sources/tegra/optee-src/nv-optee
 sudo apt install device-tree-compiler
 dtc -I dts -O dtb -o ./optee/tegra234-optee.dtb ./optee/tegra234-optee.dts
@@ -26,6 +30,7 @@ dtc -I dts -O dtb -o ./optee/tegra234-optee.dtb ./optee/tegra234-optee.dts
 cd ~/Linux_for_Tegra/sources/tegra/optee-src
 cp ~/Linux_for_Tegra/nv_tegra/tos-scripts/gen_tos_part_img.py .
 
+echo "!!!!!!!!!!!  build tos  !!!!!!!!!!!!"
 ./gen_tos_part_img.py \
 --monitor ./atf/arm-trusted-firmware/build/tegra/t234/release/bl31.bin \
 --os ./nv-optee/optee/build/t234/core/tee-raw.bin \
@@ -35,4 +40,5 @@ cp ~/Linux_for_Tegra/nv_tegra/tos-scripts/gen_tos_part_img.py .
 
 SCRIPT_DIR="$(dirname $(readlink -f "${0}"))"
 cd "/${SCRIPT_DIR="$(dirname $(readlink -f "${0}"))"}"
-source optee_src_build.sh -p t234
+cd  ~/cp4ad
+./optee_src_build.sh -p t234
