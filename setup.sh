@@ -41,6 +41,4 @@ echo "!!!!!!!!!!!  build tos  !!!!!!!!!!!!"
 --tostype optee \
 ./tos.img
 
-SCRIPT_DIR="$(dirname $(readlink -f "${0}"))"
-cd "/${SCRIPT_DIR="$(dirname $(readlink -f "${0}"))"}"
-./optee_src_build.sh -p t234
+/home/avees/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee_src_build.sh -p t234
