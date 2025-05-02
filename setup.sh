@@ -7,9 +7,12 @@ cd ~/Linux_for_Tegra/
 echo "export CROSS_COMPILE_AARCH64_PATH=/usr" >> ~/.bashrc
 echo "export CROSS_COMPILE_AARCH64=\$CROSS_COMPILE_AARCH64_PATH/bin/" >> ~/.bashrc
 echo "export UEFI_STMM_PATH=~/Linux_for_Tegra/bootloader/standalonemm_optee_t234.bin" >> ~/.bashrc
-source ~/.bashrc
 
-echo "!!!!!!!!!!!  build atf  !!!!!!!!!!!!"
+export CROSS_COMPILE_AARCH64_PATH=/usr
+export CROSS_COMPILE_AARCH64=\$CROSS_COMPILE_AARCH64_PATH/bin/
+export UEFI_STMM_PATH=~/Linux_for_Tegra/bootloader/standalonemm_optee_t234.bin
+
+echo "!!!!!!!!!!!  build atfy  !!!!!!!!!!!!"
 cd ~/Linux_for_Tegra/sources/tegra/optee-src/atf/arm-trusted-firmware
 make BUILD_BASE=./build \
 CROSS_COMPILE="${CROSS_COMPILE_AARCH64}" \
@@ -40,5 +43,4 @@ echo "!!!!!!!!!!!  build tos  !!!!!!!!!!!!"
 
 SCRIPT_DIR="$(dirname $(readlink -f "${0}"))"
 cd "/${SCRIPT_DIR="$(dirname $(readlink -f "${0}"))"}"
-cd  ~/cp4ad
 ./optee_src_build.sh -p t234
