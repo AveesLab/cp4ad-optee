@@ -19,15 +19,15 @@ CROSS_COMPILE="${CROSS_COMPILE_AARCH64}" \
 DEBUG=0 LOG_LEVEL=20 PLAT=tegra SPD=opteed TARGET_SOC=t234 V=0
 
 echo "!!!!!!!!!!!  build optee  !!!!!!!!!!!!"
-sudo apt install pip
-pip install --upgrade cryptography
+sudo apt install pip -y
+pip install --upgrade cryptography -y
 cd /home/avees/Linux_for_Tegra/sources/tegra/optee-src/nv-optee
 sudo apt install python3-pyelftools
 ./optee_src_build.sh -p t234
 
 echo "!!!!!!!!!!!  dtc  !!!!!!!!!!!!"
 cd /home/avees/Linux_for_Tegra/sources/tegra/optee-src/nv-optee
-sudo apt install device-tree-compiler
+sudo apt install device-tree-compiler -y
 dtc -I dts -O dtb -o ./optee/tegra234-optee.dtb ./optee/tegra234-optee.dts
 
 cd /home/avees/Linux_for_Tegra/sources/tegra/optee-src
