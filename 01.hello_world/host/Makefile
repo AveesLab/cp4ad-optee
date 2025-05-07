@@ -3,7 +3,7 @@
 CFLAGS += -Wall -I../ta -I$(OPTEE_CLIENT_EXPORT)/include -fstack-protector-strong
 LDADD += -lteec -L$(OPTEE_CLIENT_EXPORT)/lib
 
-SRCS := main.c
+SRCS := hello_optee_world.c
 OBJS := $(patsubst %.c,$(O)/%.o,$(SRCS))
 
 BINARY := hello_optee_world
