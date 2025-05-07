@@ -6,7 +6,7 @@ LDADD += -lteec -L$(OPTEE_CLIENT_EXPORT)/lib
 SRCS := main.c
 OBJS := $(patsubst %.c,$(O)/%.o,$(SRCS))
 
-BINARY := hello_world
+BINARY := hello_optee_world
 
 .PHONY: all clean
 
