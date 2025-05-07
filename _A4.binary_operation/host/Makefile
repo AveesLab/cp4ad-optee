@@ -23,6 +23,6 @@ $(O)/%.o: %.c
 install:
 	@echo "[installing $(BINARY)...]"
 	sudo cp $(O)/$(BINARY) $(CA_EXE_DIR)
-	
+
 clean:
 	rm -f $(OBJS) $(O)/$(BINARY)

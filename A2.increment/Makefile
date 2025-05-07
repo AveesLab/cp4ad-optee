@@ -31,7 +31,7 @@ install:
 	@echo "[installing TA...]"
 	sudo cp build/ta/*.ta $(TA_INSTALL_DIR)
 	@echo "[installing HOST...]"
-	sudo cp build/host/* $(CA_EXE_DIR)
+	$(MAKE) -C host CA_EXE_DIR=$(CA_EXE_DIR) O=../build/host install
 	@echo "\n[$(notdir $(shell pwd))] Install complete."
 
 clean:

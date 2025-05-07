@@ -20,5 +20,9 @@ $(O)/%.o: %.c
 	mkdir -p $(dir $@)
 	gcc $(CFLAGS) -c $< -o $@
 
+install:
+	@echo "[installing $(BINARY)...]"
+	sudo cp $(O)/$(BINARY) $(CA_EXE_DIR)
+
 clean:
 	rm -f $(OBJS) $(O)/$(BINARY)

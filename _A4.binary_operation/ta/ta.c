@@ -27,13 +27,11 @@ TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx, uint32_t cmd_id, uint32_t 
     (void)params;
 
     switch (cmd_id) {
-    case CMD_INCREMENT:
-        // (1) //
-
+    case CMD_ADDITION:
+        params[0].value.a = params[0].value.a + params[1].value.a;
         return TEE_SUCCESS;
-    case CMD_DECREMENT:
-        // (2) //
-        
+    case CMD_SUBTRACTION:
+        params[0].value.a = params[0].value.a - params[1].value.a;
         return TEE_SUCCESS;
     default:
         return TEE_ERROR_BAD_PARAMETERS;

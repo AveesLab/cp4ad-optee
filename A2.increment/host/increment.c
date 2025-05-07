@@ -10,39 +10,37 @@ int main() {
     TEEC_Session sess;
     TEEC_Operation op;
     uint32_t err_origin;
-    
-    int initial_value = ; // (1) //
+
+    int initial_value = 42;
 
     /*
     [Initialize the context]
     */
-    __FILL_THIS_FUNCTION__(NULL, &ctx); // (2) //
+    TEEC_InitializeContext(NULL, &ctx);
     printf("[Initialized Context!]\n");
 
     /*
     [Set the UUID]
     */
-    TEEC_UUID uuid = ; // (3) //
+    TEEC_UUID uuid = TA_UUID;
 
     /*
     [Open a session]
     */
-    __FILL_THIS_FUNCTION__(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &err_origin); // (4) //
+    TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &err_origin);
     printf("[Session Opened!]\n");
 
     /*
     [Set Parameters]
     */
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_NONE, TEEC_NONE, TEEC_NONE, TEEC_NONE);
     memset(&op, 0, sizeof(op));
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_INOUT, TEEC_NONE,
-                    TEEC_NONE, TEEC_NONE);
-    op.params[0].value.a = ; // (5) //
+    op.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_INOUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
+    op.params[0].value.a = initial_value;
 
     /*
     [Invoke the command]
     */
-    TEEC_InvokeCommand(& , , &op, &err_origin); // (6) //
+    TEEC_InvokeCommand(&sess, CMD_INCREMENT, &op, &err_origin);
     initial_value = op.params[0].value.a;
     printf("[TA command (increment) executed successfully!]\n");
     printf("number after increment = %d\n", initial_value);
@@ -50,13 +48,13 @@ int main() {
     /*
     [Close the session]
     */
-    TEEC_CloseSession(& ); // (7) //
+    TEEC_CloseSession(&sess);
     printf("[Closed Session!]\n");
     
     /*
     [Finalize the context]
     */
-    TEEC_FinalizeContext(& ); // (8) //
+    TEEC_FinalizeContext(&ctx);
     printf("[Finalized Context!]\n");
 
     return 0;

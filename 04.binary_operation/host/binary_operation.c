@@ -12,7 +12,6 @@ int main(int argc, char *argv[]) {
     TEEC_UUID uuid;
     uint32_t err_origin;
     int operation, value_0 = 0, value_1 = 0, result;
-    TEEC_Result res;
 
     if ((argc == 3 && (atoi(argv[1]) == 0 || atoi(argv[1]) == 1)) ||
         (argc == 4 && (atoi(argv[1]) == 2 || atoi(argv[1]) == 3))) {
@@ -38,7 +37,12 @@ int main(int argc, char *argv[]) {
     /*
     [Set the UUID]
     */
-    uuid = (operation < 2) ? (TEEC_UUID)TA_UUID_UNARY : (TEEC_UUID)TA_UUID_BINARY;
+    if (operation < 2) {
+        uuid = (TEEC_UUID)TA_UUID_UNARY;
+    }
+    else {
+        uuid = (TEEC_UUID)  ; // (1) //
+    }
 
     /*
     [Open a session]
@@ -68,10 +72,22 @@ int main(int argc, char *argv[]) {
     printf("[TA command executed successfully]\n");
 
     switch (operation) {
-        case 0: printf("Result after increment = %d\n", result); break;
-        case 1: printf("Result after decrement = %d\n", result); break;
-        case 2: printf("Result after addition = %d\n", result); break;
-        case 3: printf("Result after subtraction = %d\n", result); break;
+        case CMD_INCREMENT:
+            printf("Result after increment = %d\n", result);
+            TEEC_InvokeCommand(&sess, CMD_INCREMENT, &op, &err_origin);
+            break;
+        case CMD_DECREMENT:
+            printf("Result after decrement = %d\n", result);
+            TEEC_InvokeCommand(&sess, CMD_DECREMENT, &op, &err_origin);
+            break;
+        case CMD_ADDITION:
+            printf("Result after addition = %d\n", result);
+            TEEC_InvokeCommand(); // (2) //
+            break;
+        case CMD_SUBTRACTION:
+            printf("Result after subtraction = %d\n", result);
+            TEEC_InvokeCommand(); // (3) //
+            break;
     }
 
     /*
