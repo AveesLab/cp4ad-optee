@@ -1,4 +1,4 @@
-sudo apt install pip python3-pyelftools device-tree-compiler -y
+sudo apt install pip python3-pyelftools device-tree-compiler tree -y
 pip install --upgrade cryptography
 
 cd /home/avees
@@ -14,7 +14,7 @@ export CROSS_COMPILE_AARCH64_PATH=/usr
 export CROSS_COMPILE_AARCH64=${CROSS_COMPILE_AARCH64_PATH}/bin/
 export UEFI_STMM_PATH=/home/avees/Linux_for_Tegra/bootloader/standalonemm_optee_t234.bin
 
-echo "!!!!!!!!!!!  build atfy  !!!!!!!!!!!!"
+echo "!!!!!!!!!!!  build atf  !!!!!!!!!!!!"
 cd /home/avees/Linux_for_Tegra/sources/tegra/optee-src/atf/arm-trusted-firmware
 make BUILD_BASE=./build \
 CROSS_COMPILE="${CROSS_COMPILE_AARCH64}" \
