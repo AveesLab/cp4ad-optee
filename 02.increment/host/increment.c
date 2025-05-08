@@ -36,7 +36,6 @@ int main() {
 
     memset(&op, 0, sizeof(op));
     op.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_INOUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
-    op.params[0].value.a = initial_value;
     op.params[0].value.a = ; // (4) //
 
     /*

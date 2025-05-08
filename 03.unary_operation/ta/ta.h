@@ -11,4 +11,3 @@
 #define __FILL_THIS_VAR__		1
 
 #endif
-

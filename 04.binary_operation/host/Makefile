@@ -3,26 +3,25 @@
 CFLAGS += -Wall -I../ta -I$(OPTEE_CLIENT_EXPORT)/include -fstack-protector-strong
 LDADD += -lteec -L$(OPTEE_CLIENT_EXPORT)/lib
 
-SRCS := binary_operation.c
+SRCS := $(wildcard *.c)
 OBJS := $(patsubst %.c,$(O)/%.o,$(SRCS))
-
-BINARY := binary_operation
+BINARY := $(patsubst %.c,$(O)/%, $(SRCS))
 
 .PHONY: all clean
 
-all: $(O)/$(BINARY)
-
-$(O)/$(BINARY): $(OBJS)
-	mkdir -p $(dir $@)
-	gcc -o $@ $(OBJS) $(LDADD)
+all: $(OBJS) $(BINARY)
 
 $(O)/%.o: %.c
 	mkdir -p $(dir $@)
 	gcc $(CFLAGS) -c $< -o $@
 
-install:
-	@echo "[installing $(BINARY)...]"
-	sudo cp $(O)/$(BINARY) $(CA_EXE_DIR)
-	
+$(O)/%: $(O)/%.o
+	mkdir -p $(dir $@)
+	gcc -o $@ $< $(LDADD)
+
+install: $(BINARY)
+	@echo "[installing binaries...]"
+	sudo cp $(foreach bin, $(BINARY), $(bin)) $(CA_EXE_DIR)
+
 clean:
-	rm -f $(OBJS) $(O)/$(BINARY)
+	rm -f $(OBJS) $(BINARY)

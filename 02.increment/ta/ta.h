@@ -1,7 +1,7 @@
 #ifndef __TA_H__
 #define __TA_H__
 
-// 1. Modify UUID.
+// 1. Modify UUID. {8, 4, 4, {2, 2, 2, 2, 2, 2, 2, 2}}
 #define TA_UUID	\
 		{ 0x, 0x, 0x, \
 		{ 0x, 0x, 0x, 0x, 0x, 0x, 0x, 0x} }
@@ -10,4 +10,3 @@
 #define __FILL_THIS_VAR__		0
 
 #endif
-
