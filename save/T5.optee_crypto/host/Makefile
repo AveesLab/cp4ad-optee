@@ -1,34 +1,27 @@
-CC ?= $(CROSS_COMPILE)gcc
+# No Need to modify this file.
 
-CFLAGS += -I../ta -I${OPTEE_CLIENT_EXPORT}/include -fstack-protector-strong
+CFLAGS += -Wall -I../ta -I$(OPTEE_CLIENT_EXPORT)/include -fstack-protector-strong
 LDADD += -lteec -L$(OPTEE_CLIENT_EXPORT)/lib
 
-SRCS = main.c save_key.c
-OBJS = $(patsubst %.c,$(O)/%.o,$(SRCS))
+SRCS := $(wildcard *.c)
+OBJS := $(patsubst %.c,$(O)/%.o,$(SRCS))
+BINARY := $(patsubst %.c,$(O)/%, $(SRCS))
 
-## 1. Modify the BINARY ##
-BINARY = optee_crypto save_key
+.PHONY: all clean
 
-.PHONY: all install
-all: $(BINARY) install
+all: $(OBJS) $(BINARY)
 
-save_key: $(O)/save_key.o
-	$(CC) -o $(O)/$@ $^ $(LDADD)
+$(O)/%.o: %.c
+	mkdir -p $(dir $@)
+	gcc $(CFLAGS) -c $< -o $@
 
-optee_crypto: $(O)/main.o
-	$(CC) -o $(O)/$@ $^ $(LDADD)
-
-$(O)/%.o: ./%.c
-	mkdir -p $(O)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(O)/%: $(O)/%.o
+	mkdir -p $(dir $@)
+	gcc -o $@ $< $(LDADD)
 
 install: $(BINARY)
-	mkdir -p $(OPTEE_CLIENT_EXPORT)/sbin
-	for bin in $(BINARY); do cp $(O)/$$bin $(OPTEE_CLIENT_EXPORT)/sbin/; done
+	@echo "[installing binaries...]"
+	sudo cp $(foreach bin, $(BINARY), $(bin)) $(CA_EXE_DIR)
 
-
-.PHONY: clean
 clean:
-	rm -f $(OBJS)
-	for bin in $(BINARY); do rm -f $(O)/$$bin $(OPTEE_CLIENT_EXPORT)/sbin/$$bin; done
-
+	rm -f $(OBJS) $(BINARY)

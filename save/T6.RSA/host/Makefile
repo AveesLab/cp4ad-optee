@@ -1,35 +1,27 @@
-CC ?= $(CROSS_COMPILE)gcc
-CADD = $(CFLAGS) -Wall -I../ta -I$(OPTEE_CLIENT_EXPORT)/include -fstack-protector-strong
-LDADD = $(LDFLAGS)  -lteec -L$(OPTEE_CLIENT_EXPORT)/lib
+# No Need to modify this file.
 
-SRCS = main.c generate_key.c
-OBJS = $(patsubst %.c,$(O)/%.o,$(SRCS))
+CFLAGS += -Wall -I../ta -I$(OPTEE_CLIENT_EXPORT)/include -fstack-protector-strong
+LDADD += -lteec -L$(OPTEE_CLIENT_EXPORT)/lib
 
-## 1. Modify the BINARY ##
-BINARY = rsa generate_key
+SRCS := $(wildcard *.c)
+OBJS := $(patsubst %.c,$(O)/%.o,$(SRCS))
+BINARY := $(patsubst %.c,$(O)/%, $(SRCS))
 
-.PHONY: all install
-all: $(BINARY) install
+.PHONY: all clean
 
-generate_key: $(O)/generate_key.o
-	$(CC) -o $(O)/$@ $^ $(LDADD)
-
-rsa: $(O)/main.o
-	$(CC) -o $(O)/$@ $^ $(LDADD)
+all: $(OBJS) $(BINARY)
 
 $(O)/%.o: %.c
-	@echo here
-	@echo $(CADD)
-	@echo $(LDADD)
-	@echo here
-	mkdir -p $(O)
-	$(CC) $(CADD) -c $< -o $@
+	mkdir -p $(dir $@)
+	gcc $(CFLAGS) -c $< -o $@
+
+$(O)/%: $(O)/%.o
+	mkdir -p $(dir $@)
+	gcc -o $@ $< $(LDADD)
 
 install: $(BINARY)
-	mkdir -p $(OPTEE_CLIENT_EXPORT)/sbin
-	for bin in $(BINARY); do cp $(O)/$$bin $(OPTEE_CLIENT_EXPORT)/sbin/; done
+	@echo "[installing binaries...]"
+	sudo cp $(foreach bin, $(BINARY), $(bin)) $(CA_EXE_DIR)
 
-.PHONY: clean
 clean:
-	rm -f $(OBJS)
-	for bin in $(BINARY); do rm -f $(O)/$$bin $(OPTEE_CLIENT_EXPORT)/sbin/$$bin; done
+	rm -f $(OBJS) $(BINARY)
