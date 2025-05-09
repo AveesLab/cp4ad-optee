@@ -8,51 +8,56 @@
 extern char secret_text[]; // Access secure data directly
 
 int main(int argc, char *argv[]) {
-
     TEEC_Context ctx;
     TEEC_Session sess;
-    TEEC_Result res;
     TEEC_Operation op;
     uint32_t err_origin;
-// 2. define buffer;
-    char buffer[100];
 
-    /* Initialize OP-TEE context */
-    res = TEEC_InitializeContext(NULL, &ctx);
-    if (res != TEEC_SUCCESS)
-        errx(1, "TEEC_InitializeContext failed with code 0x%x", res);
+    /*
+    [Initialize the context]
+    */
+    TEEC_InitializeContext(NULL, &ctx);
+    printf("[Initialized Context!]\n");
 
-    /* Open OP-TEE session */
-// 2. Modify ta UUID
-    TEEC_UUID uuid = TA_SECRET_TEXT_UUID;
+    /*
+    [Set the UUID]
+    */
+    TEEC_UUID uuid = TA_UUID;
 
-    res = TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &err_origin);
-    if (res != TEEC_SUCCESS)
-        errx(1, "TEEC_OpenSession failed with code 0x%x origin 0x%x", res, err_origin);
+    /*
+    [Open a session]
+    */
+    TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &err_origin);
+    printf("[Session Opened!]\n");
 
-    printf("OP-TEE session opened successfully!\n");
-    printf("\n[TA Access] Getting secret_text using InvokeCommand...\n");
-
-    /* Execute TA command */
-
-// 3. Modify operation parameters (if needed) //
+    /*
+    [Set Parameters]
+    */
     memset(&op, 0, sizeof(op));
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_OUTPUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
-    op.params[0].tmpref.buffer = buffer;
-    op.params[0].tmpref.size = sizeof(buffer);
+    op.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_INOUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
 
-// 4. Modify command ID //
-    // Access secure data through TA
-    res = TEEC_InvokeCommand(&sess, CMD_SECRET_TEXT, &op, &err_origin);
-    if (res != TEEC_SUCCESS)
-        errx(1, "TEEC_InvokeCommand failed with code 0x%x origin 0x%x", res, err_origin);
-    printf("TA command executed successfully!\n");
+    /*
+    [Invoke the command]
+    */
+    TEEC_InvokeCommand(&sess, CMD_HELLO, &op, &err_origin); // (CMD_HELLO, CMD_GOODBYE)
+    int res = op.params[0].value.a;
+    if (res == 0) {
+        printf("Hello OP-TEE World!\n");
+    }
+    else {
+        printf("Goodbye OP-TEE World!\n");
+    }
 
-    printf("Secret text: %s\n", buffer);
-
-    /* Terminate session and context */
+    /*
+    [Close the session]
+    */
     TEEC_CloseSession(&sess);
+    printf("[Closed Session!]\n");
+    
+    /*
+    [Finalize the context]
+    */
     TEEC_FinalizeContext(&ctx);
-
+    printf("[Finalized Context!]\n");
     return 0;
 }
