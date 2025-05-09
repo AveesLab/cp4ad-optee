@@ -1,8 +1,7 @@
 #include <tee_internal_api.h>
 #include <tee_internal_api_extensions.h>
 
-// 1. Modify ta header file path.
-#include "ta_secret_text.h"
+#include "ta.h"
 #include <string.h>
 
 // 2. Define secure data here.

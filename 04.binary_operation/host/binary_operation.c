@@ -72,19 +72,19 @@ int main(int argc, char *argv[]) {
     printf("[TA command executed successfully]\n");
 
     switch (operation) {
-        case CMD_INCREMENT:
+        case CMD_INC:
             printf("Result after increment = %d\n", result);
             TEEC_InvokeCommand(&sess, CMD_INCREMENT, &op, &err_origin);
             break;
-        case CMD_DECREMENT:
+        case CMD_DEC:
             printf("Result after decrement = %d\n", result);
             TEEC_InvokeCommand(&sess, CMD_DECREMENT, &op, &err_origin);
             break;
-        case CMD_ADDITION:
+        case CMD_ADD:
             printf("Result after addition = %d\n", result);
             TEEC_InvokeCommand(); // (3) //
             break;
-        case CMD_SUBTRACTION:
+        case CMD_SUB:
             printf("Result after subtraction = %d\n", result);
             TEEC_InvokeCommand(); // (4) //
             break;
