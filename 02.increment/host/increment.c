@@ -42,9 +42,9 @@ int main() {
     [Invoke the command]
     */
     TEEC_InvokeCommand(& , , &op, &err_origin); // (5) //
-    initial_value = op.params[0].value.a;
+    int result = op.params[0].value.a;
     printf("[TA command (increment) executed successfully!]\n");
-    printf("number after increment = %d\n", initial_value);
+    printf("number after increment = %d\n", result);
 
     /*
     [Close the session]

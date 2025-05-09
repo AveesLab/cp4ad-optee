@@ -3,8 +3,6 @@
 #include "ta.h"
 #include <string.h>
 
-static char secure_data[100];
-
 TEE_Result TA_CreateEntryPoint(void) {
     return TEE_SUCCESS;
 }
@@ -25,18 +23,23 @@ void TA_CloseSessionEntryPoint(void *sess_ctx) {
 
 TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx, uint32_t cmd_id, uint32_t param_types, TEE_Param params[]) {
     (void)sess_ctx;
+    (void)cmd_id;
     (void)param_types;
-    strcpy(secure_data, "[This is a secret text.]"); 
 
-    switch (cmd_id) {
-    case CMD_SESSION_ACCESS:
-        TEE_MemMove(params[0].memref.buffer, secure_data, strlen(secure_data) + 1);
-        return TEE_SUCCESS;
-
-    case CMD_DIRECT_ACCESS:
-        params[0].value.a = (uintptr_t)secure_data;
-        return TEE_SUCCESS;
-    default:
-        return TEE_ERROR_BAD_PARAMETERS;
+    char input_data[100] = {};
+    char reply_data[] = "Hello Host !";
+    TEE_MemMove(input_data, params[0].memref.buffer, params[0].memref.size);
+    
+    switch (cmd_id){
+        case CMD_STRING:
+            TEE_MemMove(params[0].memref.buffer, reply_data, strlen(reply_data) + 1);
+            break;
+        case CMD_ECHO:
+            TEE_MemMove(params[0].memref.buffer, input_data, strlen(input_data) + 1);
+            break;
+        default:
+            return TEE_ERROR_BAD_PARAMETERS;
     }
+
+    return TEE_SUCCESS;
 }

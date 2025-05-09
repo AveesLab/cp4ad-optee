@@ -1,3 +1,3 @@
-BINARY=54eac490-4f7a-4db5-8fd7-221b7a2239ea
+BINARY=e9b09cc1-355f-4aeb-aca1-bb61d91df758
 
 include $(TA_DEV_KIT_DIR)/mk/ta_dev_kit.mk
