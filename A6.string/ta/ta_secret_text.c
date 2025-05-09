@@ -17,7 +17,7 @@ void TA_DestroyEntryPoint(void) {
     DMSG("TA destroyed.");
 }
 
-TEE_Result TA_OpenSessionEntryPoint(uint32_t param_types, TEE_Param params[4], void **sess_ctx) {
+TEE_Result TA_OpenSessionEntryPoint(uint32_t param_types, TEE_Param params[], void **sess_ctx) {
     (void)param_types;
     (void)params;
     (void)sess_ctx;
@@ -31,7 +31,7 @@ void TA_CloseSessionEntryPoint(void *sess_ctx) {
 }
 
 // 2. Implement function here. If needed, you can create new functions.
-TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx, uint32_t cmd_id, uint32_t param_types, TEE_Param params[4]) {
+TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx, uint32_t cmd_id, uint32_t param_types, TEE_Param params[]) {
     (void)sess_ctx;
 
     switch (cmd_id) {
