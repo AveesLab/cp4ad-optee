@@ -20,7 +20,7 @@ int main(int  argc, char *argv[]) {
     /*
     [Set the UUID]
     */
-    TEEC_UUID uuid = TA_UUID;
+    TEEC_UUID uuid = {0xb6486f4a, 0x81bd, 0x4bab, {0x86, 0x74, 0x71, 0xea, 0x9b, 0xf8, 0xe5, 0x1e}};
 
     /*
     [Open a session]

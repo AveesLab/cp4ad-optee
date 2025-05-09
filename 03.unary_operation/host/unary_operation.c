@@ -31,7 +31,7 @@ int main(int  argc, char *argv[]) {
     /*
     [Set the UUID]
     */
-    TEEC_UUID uuid = ; // (2) //
+    TEEC_UUID uuid = {0x, 0x, 0x, {0x, 0x, 0x, 0x, 0x, 0x, 0x, 0x}}; // (2) //
 
     /*
     [Open a session]

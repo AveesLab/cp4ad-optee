@@ -38,10 +38,10 @@ int main(int argc, char *argv[]) {
     [Set the UUID]
     */
     if (operation < 2) {
-        uuid = (TEEC_UUID)TA_UUID_UNARY;
+        uuid = ; // (1) //
     }
     else {
-        uuid = (TEEC_UUID)  ; // (1) //
+        uuid = ; // (2) //
     }
 
     /*
@@ -82,11 +82,11 @@ int main(int argc, char *argv[]) {
             break;
         case CMD_ADDITION:
             printf("Result after addition = %d\n", result);
-            TEEC_InvokeCommand(); // (2) //
+            TEEC_InvokeCommand(); // (3) //
             break;
         case CMD_SUBTRACTION:
             printf("Result after subtraction = %d\n", result);
-            TEEC_InvokeCommand(); // (3) //
+            TEEC_InvokeCommand(); // (4) //
             break;
     }
 
