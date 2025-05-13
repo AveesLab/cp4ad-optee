@@ -10,7 +10,8 @@
         "ta_hello_world.h": "c",
         "type_traits": "c",
         "ta.h": "c",
-        "err.h": "c"
+        "err.h": "c",
+        "stdlib.h": "c"
     },
     "codesnap.transparentBackground": true,
     "codesnap.showWindowControls": false
