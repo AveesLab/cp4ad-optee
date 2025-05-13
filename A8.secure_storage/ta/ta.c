@@ -68,7 +68,7 @@ static TEE_Result load_object(TEE_Param params[4])
 
     TEE_ReadObjectData(obj, data, object_info.dataSize, &data_len);
     TEE_MemMove(params[1].memref.buffer, data, object_info.dataSize);
-    params[1].memref.size = data_len;
+    params[1].memref.size = object_info.dataSize;
 
     TEE_CloseObject(obj);
     TEE_Free(key);
