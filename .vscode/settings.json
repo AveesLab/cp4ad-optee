@@ -14,5 +14,6 @@
         "stdlib.h": "c"
     },
     "codesnap.transparentBackground": true,
-    "codesnap.showWindowControls": false
+    "codesnap.showWindowControls": false,
+    "cmake.sourceDirectory": "/home/avees/cp4ad-optee/save/optee_examples"
 }
