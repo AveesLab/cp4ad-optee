@@ -16,9 +16,16 @@
 #define MICRO_KEYLEN 2     // 2바이트 개인키/공개키
 #define MICRO_SIGLEN 3     // 3바이트 서명
 
+uint8_t message[5] = {0x11, 0x22, 0x33, 0x44, 0x55};
+uint32_t hash = 0xABCDE1;
+// 개인키 (2바이트)
+uint8_t private_key[MICRO_KEYLEN] = {0x12, 0x34};
+
+// 공개키 계산
+uint8_t public_key[MICRO_KEYLEN];
+
 // 간단한 해시 함수 (XOR + 회전) → 24비트 출력
 uint32_t mini_hash(const uint8_t *data, size_t len) {
-    uint32_t hash = 0xABCDE1;
     for (size_t i = 0; i < len; i++) {
         hash ^= (data[i] + i * 13);
         hash = (hash << 5) | (hash >> (27)); // 5비트 좌회전
@@ -66,13 +73,8 @@ int micro_verify(const uint8_t *message, size_t msg_len, const uint8_t *signatur
 // MAIN 함수
 int main() {
     // 5바이트 메시지
-    uint8_t message[5] = {0x11, 0x22, 0x33, 0x44, 0x55};
+    
 
-    // 개인키 (2바이트)
-    uint8_t private_key[MICRO_KEYLEN] = {0x12, 0x34};
-
-    // 공개키 계산
-    uint8_t public_key[MICRO_KEYLEN];
     generate_public_key(public_key, private_key);
 
     // 서명

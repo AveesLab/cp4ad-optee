@@ -3,6 +3,7 @@
 #include <string.h>
 #define DES_KEY_SIZE 8
 
+
 uint64_t key = 0x0123456789ABCDEF;
 
 // Feistel 함수 (간단한 XOR + 회전)
@@ -62,9 +63,11 @@ int main() {
     unsigned char plaintext[] = "ABCDEFGH";   // 64비트 입력
     unsigned char encrypted[DES_KEY_SIZE+1], decrypted[DES_KEY_SIZE+1];
     printf("Input     : %s\n", plaintext);
-    encrypt(plaintext, plaintext);
+    printf("Encrypted     : %s\n", encrypted);
+    encrypt(plaintext, encrypted);
     encrypted[8] = '\0';
-    printf("Encrypted     : %s\n", plaintext);
+    printf("Input     : %s\n", plaintext);
+    printf("Encrypted     : %s\n", encrypted);
     decrypt(plaintext, plaintext);
     decrypted[8] = '\0';
 
