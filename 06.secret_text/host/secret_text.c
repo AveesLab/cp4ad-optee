@@ -47,7 +47,6 @@ void ta_access() {
     op.params[0].tmpref.buffer = buffer;
     op.params[0].tmpref.size = sizeof(buffer);
     TEEC_InvokeCommand(&sess, CMD_SESSION_ACCESS, &op, &err_origin);
-
     printf("TA command executed successfully!\n");
     printf("Secret text: %s\n", buffer);
 
