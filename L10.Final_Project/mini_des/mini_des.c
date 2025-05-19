@@ -75,22 +75,17 @@ void decrypt(unsigned char *encrypted, unsigned char *decrypted) {
 }
 
 int main() {
-    unsigned char buf_send[BLOCK_SIZE] = {'A', 'B', 'C', 'D', 'E'};
-    unsigned char encrypted[BLOCK_SIZE] = {0};
-    unsigned char decrypted[BLOCK_SIZE] = {0};
-
+    unsigned char buf_send[8] = {'A', 'B', 'C', 'D', 'E'};
     printf("Input    : %s\n", buf_send);
-    print_hex("Input", buf_send, BLOCK_SIZE);
+    print_hex("Input", buf_send, 8);
 
-    encrypt(buf_send, encrypted);
+    encrypt(buf_send, buf_send);
     printf("Encrypted: ");
-    for (int i = 0; i < BLOCK_SIZE; i++) printf("%c", encrypted[i]);
-    printf("\n");
-    print_hex("Encrypted", encrypted, BLOCK_SIZE);
+    print_hex("Encrypted", buf_send, 8);
 
-    decrypt(encrypted, decrypted);
-    printf("Decrypted: %s\n", decrypted);
-    print_hex("Decrypted", decrypted, BLOCK_SIZE);
+    decrypt(buf_send, buf_send);
+    printf("Decrypted: %s\n", buf_send);
+    print_hex("Decrypted", buf_send, 8);
 
     return 0;
 }
