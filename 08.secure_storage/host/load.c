@@ -30,13 +30,16 @@ int main(int argc, char *argv[]) {
                            TEEC_LOGIN_PUBLIC, NULL, NULL, &origin);
 
     memset(&op, 0, sizeof(op));
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_INPUT, TEEC_MEMREF_TEMP_OUTPUT, TEEC_NONE, TEEC_NONE);
-    op.params[0].tmpref.buffer = key;
-    op.params[0].tmpref.size   = key_len;
-    op.params[1].tmpref.buffer = data;
-    op.params[1].tmpref.size   = data_len;
+    // write here //
+    op.paramTypes = TEEC_PARAM_TYPES(, , TEEC_NONE, TEEC_NONE);
+    op.params;
+    op.params;
+    op.params;
+    op.params;
+
     TEEC_InvokeCommand(&sess, CMD_LOAD, &op, &origin);
-    data_len = op.params[1].tmpref.size;
+    // write here //
+    data_len = op.params[];
     
     if (data_len !=0) {
         printf("Object(%s) loaded successfully!\n", key);

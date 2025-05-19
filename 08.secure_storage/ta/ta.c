@@ -21,21 +21,19 @@ static TEE_Result save_object(TEE_Param params[4])
 {
     TEE_ObjectHandle obj = TEE_HANDLE_NULL;
 
-    size_t key_len = params[0].memref.size;
-    char *key = TEE_Malloc(key_len, 0);
-    TEE_MemMove(key, params[0].memref.buffer, key_len);
+    // write here //
+    size_t key_len = ;
+    char *key = ;
+    TEE_MemMove();
 
-    size_t data_len = params[1].memref.size;
-    char *data = TEE_Malloc(data_len, 0);
-    TEE_MemMove(data, params[1].memref.buffer, data_len);
+    // write here //
+    size_t data_len = ;
+    char *data = ;
+    TEE_MemMove();
 
-    TEE_CreatePersistentObject(TEE_STORAGE_PRIVATE,
-                                     key, key_len,
-                                     TEE_DATA_FLAG_ACCESS_WRITE |
-                                     TEE_DATA_FLAG_OVERWRITE,
-                                     TEE_HANDLE_NULL,
-                                     data, data_len,
-                                     &obj);
+    // write here //
+    TEE_CreatePersistentObject();
+
     TEE_CloseObject(obj);
     TEE_Free(key);
     TEE_Free(data);
@@ -52,23 +50,19 @@ static TEE_Result load_object(TEE_Param params[4])
     char *data;
     size_t data_len;
 
-    key_len = params[0].memref.size;
-    key = TEE_Malloc(key_len, 0);
-    TEE_MemMove(key, params[0].memref.buffer, key_len);
+    // write here //
+    key_len = ;
+    key = ;
+    TEE_MemMove();
+    TEE_OpenPersistentObject();
 
-    
-
-    TEE_OpenPersistentObject(TEE_STORAGE_PRIVATE,
-                                   key, key_len,
-                                   TEE_DATA_FLAG_ACCESS_READ,
-                                   &obj);
     TEE_GetObjectInfo1(obj, &object_info);
-
     data = TEE_Malloc(object_info.dataSize, 0);
-
     TEE_ReadObjectData(obj, data, object_info.dataSize, &data_len);
     TEE_MemMove(params[1].memref.buffer, data, object_info.dataSize);
-    params[1].memref.size = object_info.dataSize;
+
+    // write here //
+    params[1].memref.size = ;
 
     TEE_CloseObject(obj);
     TEE_Free(key);
@@ -80,18 +74,11 @@ static TEE_Result delete_object(TEE_Param params[4])
 {
 	TEE_ObjectHandle object;
 
-	char *key;
-	size_t key_len;
-
-	key_len = params[0].memref.size;
-	key = TEE_Malloc(key_len, 0);
-
-	TEE_MemMove(key, params[0].memref.buffer, key_len);
-
-	TEE_OpenPersistentObject(TEE_STORAGE_PRIVATE,
-					key, key_len,
-					TEE_DATA_FLAG_ACCESS_WRITE_META,
-					&object);
+    // write here //
+	sizr_t key_len = ;
+	char *key = TEE_Malloc();
+	TEE_MemMove();
+	TEE_OpenPersistentObject();
 
 	TEE_CloseAndDeletePersistentObject1(object);
 	TEE_Free(key);

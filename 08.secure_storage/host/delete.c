@@ -26,9 +26,11 @@ int main(int argc, char *argv[]) {
     TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &origin);
 
     memset(&op, 0, sizeof(op));
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_INPUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
-    op.params[0].tmpref.buffer = key;
-    op.params[0].tmpref.size   = key_len;
+    // write here //
+    op.paramTypes = TEEC_PARAM_TYPES(, TEEC_NONE, TEEC_NONE, TEEC_NONE);
+    op.params[0].;
+    op.params[0].;
+
     TEEC_InvokeCommand(&sess, CMD_DELETE, &op, &origin);
 
     printf("Object(%s) deleted successfully!\n", key);

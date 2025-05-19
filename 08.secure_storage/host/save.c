@@ -34,11 +34,12 @@ int main(int argc, char *argv[]) {
     TEEC_InitializeContext(NULL, &ctx);
     TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &origin);
 
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_INPUT, TEEC_MEMREF_TEMP_INPUT, TEEC_NONE, TEEC_NONE);
-    op.params[0].tmpref.buffer = key;
-    op.params[0].tmpref.size = key_len;
-    op.params[1].tmpref.buffer = data;
-    op.params[1].tmpref.size = data_len;
+    // write here //
+    op.paramTypes = TEEC_PARAM_TYPES(, , TEEC_NONE, TEEC_NONE);
+    op.params
+    op.params
+    op.params
+    op.params
     TEEC_InvokeCommand(&sess, CMD_SAVE, &op, &origin);
 
     printf("Object(%s) saved successfully!\n", key);
