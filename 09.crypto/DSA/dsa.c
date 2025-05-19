@@ -54,9 +54,10 @@ int main(void) {
     char priv_buf[100];
     size_t priv_len;
     if (mbedtls_mpi_write_string(&ecdsa.d, 16, priv_buf, sizeof(priv_buf), &priv_len) == 0)
-        printf("Private Key:  %s\n\n", priv_buf);
+        hex_print("Private Key:  ", priv_buf, priv_len);
     else
         printf("Private Key:  [Error printing]\n\n");
+    printf("\n");
 
     // 공개키 출력
     unsigned char pubkey[65];
@@ -72,6 +73,7 @@ int main(void) {
     printf("Message:      ");
     for (int i = 0; i < MSGLEN; i++)
         printf("%02X ", message[i]);
+    printf("\n");
     printf("\n");
 
     // 메시지 해시
@@ -99,8 +101,6 @@ int main(void) {
     else
         printf("❌ Invalid\n");
 
-    hex_print("Hash         :    ", hash, 3); // 앞 3바이트만 출력
-    hex_print("decrypted_sig:    ", hash, 3); // ECDSA는 복호화가 없으므로 해시 재사용
 
     // 공격자 테스트
     printf("\n-- Attack Test --\n");
@@ -117,7 +117,9 @@ int main(void) {
     char fake_priv_buf[100];
     size_t fake_priv_len;
     mbedtls_mpi_write_string(&attacker.d, 16, fake_priv_buf, sizeof(fake_priv_buf), &fake_priv_len);
-    printf("Fake Priv:      %s\n\n", fake_priv_buf);
+    // printf("Fake Priv:      %s\n\n", fake_priv_buf);
+    hex_print("Private Key:  ", fake_priv_buf, fake_priv_len);
+    printf("\n");
 
     printf("[signing with fake_key..]\n");
     mbedtls_ecdsa_write_signature(&attacker, MBEDTLS_MD_SHA256,
@@ -134,8 +136,6 @@ int main(void) {
         printf("❌ Attack Passed\n");
     else
         printf("✅ Attack Detected\n");
-    hex_print("Hash         :    ", hash, 3);
-    hex_print("decrypted_sig:    ", hash, 3);
 
     // Clean up
     mbedtls_ecdsa_free(&ecdsa);

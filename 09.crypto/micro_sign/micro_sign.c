@@ -2,11 +2,6 @@
 #include <stdint.h>
 #include <string.h>
 
-#define MSGLEN   5
-#define PRIVLEN  2
-#define PUBLEN   3
-#define SIGLEN   3
-
 static void mini_hash24(const char *data, size_t len, char out[3]) {
     uint32_t h = 0xABCDEF;
     for (size_t i = 0; i < len; i++) {
@@ -67,9 +62,9 @@ void generate_public_key(const char priv[2], char pub[3]) {
     pub[2] =  n      &0xFF;
 }
 
-void micro_sign(const char message[MSGLEN], const char priv[2], char sig[3]) {
+void micro_sign(const char message[5], const char priv[2], char sig[3]) {
     char h24[3];
-    mini_hash24(message, MSGLEN, h24);
+    mini_hash24(message, 5, h24);
     uint32_t n, d;
     derive_rsa(priv, &n, &d);
     uint32_t hval  = (h24[0]<<16)|(h24[1]<<8)|h24[2];
@@ -80,9 +75,9 @@ void micro_sign(const char message[MSGLEN], const char priv[2], char sig[3]) {
     sig[2] =  s      &0xFF;
 }
 
-int micro_verify(const char message[MSGLEN], const char pub[3], const char sig[3], char hash[3], char decrypted_sig[3]) {
+int micro_verify(const char message[5], const char pub[3], const char sig[3], char hash[3], char decrypted_sig[3]) {
     char h24[3];
-    mini_hash24(message, MSGLEN, h24);
+    mini_hash24(message, 5, h24);
     uint32_t n     = (pub[0]<<16)|(pub[1]<<8)|pub[2];
     uint32_t hval  = (h24[0]<<16)|(h24[1]<<8)|h24[2];
     uint32_t h_mod = hval % n;
@@ -99,10 +94,10 @@ int micro_verify(const char message[MSGLEN], const char pub[3], const char sig[3
 }
 
 int main(void) {
-    char message[MSGLEN] = {0x11, 0x22, 0x33, 0x44, 0x55};
-    char priv[PRIVLEN]   = {0x12, 0x34};
-    char pub[PUBLEN];
-    char sig[SIGLEN];
+    char message[5] = {0x11, 0x22, 0x33, 0x44, 0x55};
+    char priv[2]   = {0x12, 0x34};
+    char pub[3];
+    char sig[3];
     char hash[3];
     char decrypted_sig[3];
 
@@ -115,8 +110,9 @@ int main(void) {
     printf("\n");
 
     printf("Message:      ");
-    for (int i = 0; i < MSGLEN; i++)
+    for (int i = 0; i < 5; i++)
         printf("%02X ", message[i]);
+    printf("\n");
     printf("\n");
 
     printf("[signing with private_key..]\n");
@@ -133,10 +129,9 @@ int main(void) {
     printf("decrypted_sig:    %02X %02X %02X\n", decrypted_sig[0], decrypted_sig[1], decrypted_sig[2]);
 
 
-
     printf("\n-- Attack Test --\n");
-    char fake_priv[PRIVLEN] = {0xFF, 0xEE};
-    char fake_sig[SIGLEN];
+    char fake_priv[2] = {0xFF, 0xEE};
+    char fake_sig[3];
     printf("Fake Priv:      %02X %02X\n", fake_priv[0], fake_priv[1]);
     printf("\n");
     
