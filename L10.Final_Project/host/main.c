@@ -24,45 +24,61 @@ int main(int argc, char *argv[]) {
     /////////////////////////
     // secure_storage TEST //
     /////////////////////////
-    // save_object(&sess, "object_test");
+    save_object(&sess, "object_test");
 
-    // load_object(&sess, "object_test");
+    load_object(&sess, "object_test");
 
-    // delete_object(&sess, "object_test");
+    delete_object(&sess, "object_test");
 
+
+    printf("\n\n");
     //////////////////////
     // print_bytes TEST //
     //////////////////////
-    // unsigned char id[3] = {0x11, 0x22, 0x33};
-    // print_bytes(id, 3);
+    unsigned char id[3] = {0x11, 0x22, 0x33};
+    print_bytes(id, 3);
 
+    printf("\n\n");
     //////////////////////////
     // string_to_bytes TEST //
     // bytes_to_string TEST //
     //////////////////////////
-    // unsigned char *public_key = "0x12AB";
-    // unsigned char public_key_byte[2];
-    // string_to_bytes(public_key, public_key_byte);
-    // print_bytes(public_key_byte, 2);
+    unsigned char *public_key = "0x12AB";
+    unsigned char public_key_byte[2];
+    string_to_bytes(public_key, public_key_byte);
+    print_bytes(public_key_byte, 2);
 
-    // unsigned char public_key_str[7];
-    // bytes_to_string(public_key_byte, public_key_str);
-    // printf("Public key string: %s\n", public_key_str);
+    unsigned char public_key_str[7];
+    bytes_to_string(public_key_byte, public_key_str);
+    printf("Public key string: %s\n", public_key_str);
 
-    
+    printf("\n\n");
+    ///////////////////////
+    // save objects TEST //
+    /////////////////////// 
     set_whitelist(&sess);
+    printf("\n");
     set_priv_key(&sess);
     printf("\n");
 
+    printf("\n\n");
+    ////////////////////
+    // key generation //
+    //////////////////// 
     unsigned char public_key[3];
     generate_public_key(&sess, public_key);
-    printf("\n");
+
+    printf("\n\n");
+    ///////////////////////
+    // Digital Signature //
+    /////////////////////// 
     unsigned char message[5] = {0x11, 0x22, 0x33, 0x44, 0x55};
     unsigned char signature[3];
 
     micro_sign(&sess, message, signature);
     printf("Message     : ");
     for (int i = 0; i < 5; i++) printf("%02X ", message[i]);
+    printf("\n");
     printf("\nSignature   : %02X %02X %02X\n\n", signature[0], signature[1], signature[2]);
 
     micro_verify(&sess, message, signature, public_key);
