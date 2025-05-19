@@ -21,11 +21,10 @@ int main(int argc, char *argv[]) {
     // string initialization // (1) //
     char input[100] = "Hi TA !";
     
-    printf("%d, %d \n ", sizeof(input), strlen(input));
     // print string // (2) //
-    printf("\n[Host -> TA] %s\n", input);
+    printf("[Host -> TA] %s\n", input);
 
-    char output[100];
+    char output[100] = {0};
 
     memset(&op, 0, sizeof(op));
     // (3) //
@@ -34,16 +33,16 @@ int main(int argc, char *argv[]) {
     op.params[0].value.a = a;
     // (4) //
     op.params[1].tmpref.buffer = input;
-    op.params[1].tmpref.size = sizeof(input);
+    op.params[1].tmpref.size = strlen(input);
     // (5) //
     op.params[2].tmpref.buffer = output;
-    op.params[2].tmpref.size = sizeof(output);
+    op.params[2].tmpref.size = strlen(output);
 
 
-    // TEEC_InvokeCommand(&sess, CMD_STRING, &op, &err_origin);
-    TEEC_InvokeCommand(&sess, CMD_ECHO, &op, &err_origin);
+    TEEC_InvokeCommand(&sess, CMD_STRING, &op, &err_origin);
+    // TEEC_InvokeCommand(&sess, CMD_ECHO, &op, &err_origin);
 
-    printf("\n[TA -> Host] %s\n", output);
+    printf("[TA -> Host] %s\n", output);
 
     TEEC_CloseSession(&sess);
     TEEC_FinalizeContext(&ctx);

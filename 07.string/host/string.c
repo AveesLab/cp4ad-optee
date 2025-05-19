@@ -23,25 +23,26 @@ int main(int argc, char *argv[]) {
 
     //
 
-    printf("%d, %d \n ", sizeof(input), strlen(input));
 
     // (2) print string //
-    printf("\n[Host -> TA] %s\n", );
+
     //
     char output[100];
 
     memset(&op, 0, sizeof(op));
     // (3) fill argments//
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_INPUT, , , TEEC_NONE);
+    op.paramTypes = TEEC_PARAM_TYPES(, , , TEEC_NONE);
     
     op.params[0].value.a = a;
     // (4) //
-    op.params[1].tmpref.buffer = ;
-    op.params[1].tmpref.size = ;
-    // (5) //
-    op.params[2].tmpref.buffer = output;
-    // op.params[2].tmpref.size = sizeof(output);
 
+
+    //
+
+    // (5) //
+
+
+    //
 
     TEEC_InvokeCommand(&sess, CMD_STRING, &op, &err_origin);
     // TEEC_InvokeCommand(&sess, CMD_ECHO, &op, &err_origin);

@@ -56,6 +56,8 @@ static TEE_Result load_object(TEE_Param params[4])
     key = TEE_Malloc(key_len, 0);
     TEE_MemMove(key, params[0].memref.buffer, key_len);
 
+    
+
     TEE_OpenPersistentObject(TEE_STORAGE_PRIVATE,
                                    key, key_len,
                                    TEE_DATA_FLAG_ACCESS_READ,
@@ -90,6 +92,7 @@ static TEE_Result delete_object(TEE_Param params[4])
 					key, key_len,
 					TEE_DATA_FLAG_ACCESS_WRITE_META,
 					&object);
+
 	TEE_CloseAndDeletePersistentObject1(object);
 	TEE_Free(key);
 

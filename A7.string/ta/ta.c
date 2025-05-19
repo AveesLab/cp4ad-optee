@@ -32,10 +32,10 @@ TEE_Result TA_InvokeCommandEntryPoint(void *sess_ctx, uint32_t cmd_id, uint32_t 
     
     switch (cmd_id){
         case CMD_STRING:
-            TEE_MemMove(params[2].memref.buffer, reply_data, strlen(reply_data) + 1);
+            TEE_MemMove(params[2].memref.buffer, reply_data, strlen(reply_data));
             break;
         case CMD_ECHO:
-            TEE_MemMove(params[2].memref.buffer, input_data, strlen(input_data) + 1);
+            TEE_MemMove(params[2].memref.buffer, input_data, strlen(input_data));
             break;
         default:
             return TEE_ERROR_BAD_PARAMETERS;

@@ -10,6 +10,8 @@ void ta_access();
 void direct_access();
 
 int main(int argc, char *argv[]) {
+    char a[]="fourty";
+    printf("%d", strlen(a));
     if (argc < 2) {
         printf("\nUsage: %s <mode>\n", argv[0]);
         printf("  0 - TA Access (InvokeCommand)\n");
