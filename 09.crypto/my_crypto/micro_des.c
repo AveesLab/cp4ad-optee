@@ -12,25 +12,29 @@ uint32_t feistel(uint32_t half, uint64_t key) {
     return (half << 3) | (half >> (32 - 3));  // 3비트 왼쪽 회전
 }
 
-// DES-like 암복호화 함수 (1라운드)
+// DES-like 암복호화 함수 (2라운드)
 uint64_t simple_des(uint64_t input, uint64_t key, int encrypt) {
     uint32_t left  = (input >> 32) & 0xFFFFFFFF;
     uint32_t right = input & 0xFFFFFFFF;
 
     if (encrypt) {
-        uint32_t temp = right;
-        right = left ^ feistel(right, key);
-        left = temp;
+        for (int i = 0; i < 2; i++) {
+            uint32_t temp = right;
+            right = left ^ feistel(right, key);
+            left = temp;
+        }
     } else {
-        uint32_t temp = left;
-        left = right ^ feistel(left, key);
-        right = temp;
+        for (int i = 0; i < 2; i++) {
+            uint32_t temp = left;
+            left = right ^ feistel(left, key);
+            right = temp;
+        }
     }
 
     return ((uint64_t)left << 32) | right;
 }
 
-// 유틸: 8바이트 블록 → 64비트 정수로
+// 8바이트 블록 → 64비트 정수로
 uint64_t bytes_to_uint64(unsigned char *block) {
     uint64_t result = 0;
     for (int i = 0; i < 8; i++) {
@@ -39,7 +43,7 @@ uint64_t bytes_to_uint64(unsigned char *block) {
     return result;
 }
 
-// 유틸: 64비트 정수 → 8바이트 블록
+// 64비트 정수 → 8바이트 블록
 void uint64_to_bytes(uint64_t value, unsigned char *block) {
     for (int i = 7; i >= 0; i--) {
         block[i] = value & 0xFF;
@@ -58,23 +62,17 @@ void decrypt(unsigned char *encrypted, unsigned char *decrypted) {
     uint64_to_bytes(plain64, decrypted);
 }
 
-// 테스트
 int main() {
-    char plaintext[] = "12345678";   // 64비트 입력
+    char plaintext[] = "12345678";
     char encrypted[DES_KEY_SIZE+1] = {0};
     char decrypted[DES_KEY_SIZE+1] = {0};
     printf("Input     : %s\n", plaintext);
-    // printf("Encrypted     : %s\n", encrypted);
     
-    encrypt(plaintext, plaintext);
-    encrypted[8] = '\0';
-    // printf("Input     : %s\n", plaintext);
-    printf("Encrypted     : %s\n", plaintext);
+    encrypt(plaintext, encrypted);
+    printf("Encrypted     : %s\n", encrypted);
 
-    decrypt(plaintext, plaintext);
-    decrypted[8] = '\0';    
-    // for (int i = 0; i < 8; i++) printf("%02X ", encrypted[i]);
-    printf("\nDecrypted : %s\n", plaintext);
+    decrypt(encrypted, decrypted);
+    printf("Decrypted : %s\n", decrypted);
 
     return 0;
 }
