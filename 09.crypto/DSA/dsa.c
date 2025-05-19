@@ -50,8 +50,13 @@ int main(void) {
         return 1;
     }
 
-    // 개인키 출력 (앞부분만)
-    printf("Private Key:  [hidden 256-bit key]\n\n");
+    // 개인키 출력 (16진수 문자열로 변환)
+    char priv_buf[100];
+    size_t priv_len;
+    if (mbedtls_mpi_write_string(&ecdsa.d, 16, priv_buf, sizeof(priv_buf), &priv_len) == 0)
+        printf("Private Key:  %s\n\n", priv_buf);
+    else
+        printf("Private Key:  [Error printing]\n\n");
 
     // 공개키 출력
     unsigned char pubkey[65];
@@ -94,8 +99,8 @@ int main(void) {
     else
         printf("❌ Invalid\n");
 
-    hex_print("Hash         :    ", hash, 3); // 앞 3바이트만
-    hex_print("decrypted_sig:    ", hash, 3); // ECDSA는 복호화가 아닌 hash 재계산 기반
+    hex_print("Hash         :    ", hash, 3); // 앞 3바이트만 출력
+    hex_print("decrypted_sig:    ", hash, 3); // ECDSA는 복호화가 없으므로 해시 재사용
 
     // 공격자 테스트
     printf("\n-- Attack Test --\n");
@@ -108,7 +113,12 @@ int main(void) {
     unsigned char fake_sig[SIGLEN];
     size_t fake_sig_len;
 
-    printf("Fake Priv:      [hidden]\n\n");
+    // 공격자 개인키 출력
+    char fake_priv_buf[100];
+    size_t fake_priv_len;
+    mbedtls_mpi_write_string(&attacker.d, 16, fake_priv_buf, sizeof(fake_priv_buf), &fake_priv_len);
+    printf("Fake Priv:      %s\n\n", fake_priv_buf);
+
     printf("[signing with fake_key..]\n");
     mbedtls_ecdsa_write_signature(&attacker, MBEDTLS_MD_SHA256,
                                   hash, 32, fake_sig, &fake_sig_len,
