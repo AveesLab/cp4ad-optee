@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <string.h>
 
-static void mini_hash24(const char *data, size_t len, char out[3]) {
+static void mini_hash24(const unsigned char *data, size_t len, unsigned char out[3]) {
     uint32_t h = 0xABCDEF;
     for (size_t i = 0; i < len; i++) {
         h ^= (uint32_t)data[i] + i * 13;
@@ -43,18 +43,30 @@ static uint32_t modexp(uint32_t b, uint32_t e, uint32_t m) {
     return (uint32_t)r;
 }
 
-static void derive_rsa(const char priv[2], uint32_t *n, uint32_t *d) {
-    uint32_t seed = (priv[0]<<8)|priv[1];
-    uint32_t p = ((seed>>4)&0x0FFF)|0x0800;
-    while (!is_prime(p)) p++;
-    uint32_t q = (seed&0x0FFF)|0x0800;
-    while (!is_prime(q)) q++;
-    *n = p*q;
-    uint32_t phi = (p-1)*(q-1);
-    *d = (uint32_t)modinv32(17, phi);
+static void derive_rsa(const unsigned char priv[2], uint32_t *n, uint32_t *d) {
+    uint32_t seed = (priv[0] << 8) | priv[1];
+
+    while (1) {
+        uint32_t p = ((seed >> 4) & 0x0FFF) | 0x0800;
+        while (!is_prime(p)) p++;
+        uint32_t q = (seed & 0x0FFF) | 0x0800;
+        while (!is_prime(q)) q++;
+
+        *n = p * q;
+        uint32_t phi = (p - 1) * (q - 1);
+        int32_t dinv = modinv32(17, phi);
+
+        if (dinv != -1) {
+            *d = (uint32_t)dinv;
+            break;
+        }
+
+        // 실패하면 seed를 변경해서 다시 시도
+        seed++;
+    }
 }
 
-void generate_public_key(const char priv[2], char pub[3]) {
+void generate_public_key(const unsigned char priv[2], unsigned char pub[3]) {
     uint32_t n,d;
     derive_rsa(priv, &n, &d);
     pub[0] = (n>>16)&0xFF;
@@ -62,8 +74,8 @@ void generate_public_key(const char priv[2], char pub[3]) {
     pub[2] =  n      &0xFF;
 }
 
-void micro_sign(const char message[5], const char priv[2], char sig[3]) {
-    char h24[3];
+void micro_sign(const unsigned char message[5], const unsigned char priv[2], unsigned char sig[3]) {
+    unsigned char h24[3];
     mini_hash24(message, 5, h24);
     uint32_t n, d;
     derive_rsa(priv, &n, &d);
@@ -75,8 +87,8 @@ void micro_sign(const char message[5], const char priv[2], char sig[3]) {
     sig[2] =  s      &0xFF;
 }
 
-int micro_verify(const char message[5], const char pub[3], const char sig[3], char hash[3], char decrypted_sig[3]) {
-    char h24[3];
+int micro_verify(const unsigned char message[5], const unsigned char pub[3], const unsigned char sig[3], unsigned char hash[3], unsigned char decrypted_sig[3]) {
+    unsigned char h24[3];
     mini_hash24(message, 5, h24);
     uint32_t n     = (pub[0]<<16)|(pub[1]<<8)|pub[2];
     uint32_t hval  = (h24[0]<<16)|(h24[1]<<8)|h24[2];
@@ -94,12 +106,12 @@ int micro_verify(const char message[5], const char pub[3], const char sig[3], ch
 }
 
 int main(void) {
-    char message[5] = {0x11, 0x22, 0x33, 0x44, 0x55};
-    char priv[2]   = {0x12, 0xAB};
-    char pub[3];
-    char sig[3];
-    char hash[3];
-    char decrypted_sig[3];
+    unsigned char message[5] = {0x11, 0x22, 0x33, 0x44, 0x55};
+    unsigned char priv[2]   = {0x12, 0xAB};
+    unsigned char pub[3];
+    unsigned char sig[3];
+    unsigned char hash[3];
+    unsigned char decrypted_sig[3];
 
     printf("Private Key:  %02X %02X\n", priv[0], priv[1]);
     printf("\n");
@@ -130,8 +142,8 @@ int main(void) {
 
 
     printf("\n-- Attack Test --\n");
-    char fake_priv[2] = {0xFF, 0xEE};
-    char fake_sig[3];
+    unsigned char fake_priv[2] = {0xFF, 0xEE};
+    unsigned char fake_sig[3];
     printf("Fake Priv:      %02X %02X\n", fake_priv[0], fake_priv[1]);
     printf("\n");
     
