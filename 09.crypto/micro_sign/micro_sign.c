@@ -7,7 +7,7 @@
 #define PUBLEN   3
 #define SIGLEN   3
 
-static void mini_hash24(const unsigned char *data, size_t len, unsigned char out[3]) {
+static void mini_hash24(const char *data, size_t len, char out[3]) {
     uint32_t h = 0xABCDEF;
     for (size_t i = 0; i < len; i++) {
         h ^= (uint32_t)data[i] + i * 13;
@@ -48,7 +48,7 @@ static uint32_t modexp(uint32_t b, uint32_t e, uint32_t m) {
     return (uint32_t)r;
 }
 
-static void derive_rsa(const unsigned char priv[2], uint32_t *n, uint32_t *d) {
+static void derive_rsa(const char priv[2], uint32_t *n, uint32_t *d) {
     uint32_t seed = (priv[0]<<8)|priv[1];
     uint32_t p = ((seed>>4)&0x0FFF)|0x0800;
     while (!is_prime(p)) p++;
@@ -59,7 +59,7 @@ static void derive_rsa(const unsigned char priv[2], uint32_t *n, uint32_t *d) {
     *d = (uint32_t)modinv32(17, phi);
 }
 
-void generate_public_key(const unsigned char priv[2], unsigned char pub[3]) {
+void generate_public_key(const char priv[2], char pub[3]) {
     uint32_t n,d;
     derive_rsa(priv, &n, &d);
     pub[0] = (n>>16)&0xFF;
@@ -67,8 +67,8 @@ void generate_public_key(const unsigned char priv[2], unsigned char pub[3]) {
     pub[2] =  n      &0xFF;
 }
 
-void micro_sign(const unsigned char message[MSGLEN], const unsigned char priv[2], unsigned char sig[3]) {
-    unsigned char h24[3];
+void micro_sign(const char message[MSGLEN], const char priv[2], char sig[3]) {
+    char h24[3];
     mini_hash24(message, MSGLEN, h24);
     uint32_t n, d;
     derive_rsa(priv, &n, &d);
@@ -80,22 +80,31 @@ void micro_sign(const unsigned char message[MSGLEN], const unsigned char priv[2]
     sig[2] =  s      &0xFF;
 }
 
-int micro_verify(const unsigned char message[MSGLEN], const unsigned char pub[3], const unsigned char sig[3]) {
-    unsigned char h24[3];
+int micro_verify(const char message[MSGLEN], const char pub[3], const char sig[3], char hash[3], char decrypted_sig[3]) {
+    char h24[3];
     mini_hash24(message, MSGLEN, h24);
     uint32_t n     = (pub[0]<<16)|(pub[1]<<8)|pub[2];
     uint32_t hval  = (h24[0]<<16)|(h24[1]<<8)|h24[2];
     uint32_t h_mod = hval % n;
     uint32_t s     = (sig[0]<<16)|(sig[1]<<8)|sig[2];
     uint32_t rec   = modexp(s, 17, n);
+    hash[0] = (h_mod >> 16) & 0xFF;
+    hash[1] = (h_mod >>  8) & 0xFF;
+    hash[2] =  h_mod        & 0xFF;
+
+    decrypted_sig[0] = (rec >> 16) & 0xFF;
+    decrypted_sig[1] = (rec >>  8) & 0xFF;
+    decrypted_sig[2] =  rec        & 0xFF;
     return rec == h_mod;
 }
 
 int main(void) {
-    unsigned char message[MSGLEN] = {0x11, 0x22, 0x33, 0x44, 0x55};
-    unsigned char priv[PRIVLEN]   = {0x12, 0x34};
-    unsigned char pub[PUBLEN];
-    unsigned char sig[SIGLEN];
+    char message[MSGLEN] = {0x11, 0x22, 0x33, 0x44, 0x55};
+    char priv[PRIVLEN]   = {0x12, 0x34};
+    char pub[PUBLEN];
+    char sig[SIGLEN];
+    char hash[3];
+    char decrypted_sig[3];
 
     printf("Private Key:  %02X %02X\n", priv[0], priv[1]);
     printf("\n");
@@ -116,15 +125,18 @@ int main(void) {
     printf("\n");
 
     printf("[verifying signature with public_key..]\n");
-    if (micro_verify(message, pub, sig))
+    if (micro_verify(message, pub, sig, hash, decrypted_sig))
         printf("✅ Verified\n");
     else
         printf("❌ Invalid\n");
+    printf("Hash         :    %02X %02X %02X\n", hash[0], hash[1], hash[2]);
+    printf("decrypted_sig:    %02X %02X %02X\n", decrypted_sig[0], decrypted_sig[1], decrypted_sig[2]);
+
 
 
     printf("\n-- Attack Test --\n");
-    unsigned char fake_priv[PRIVLEN] = {0xFF, 0xEE};
-    unsigned char fake_sig[SIGLEN];
+    char fake_priv[PRIVLEN] = {0xFF, 0xEE};
+    char fake_sig[SIGLEN];
     printf("Fake Priv:      %02X %02X\n", fake_priv[0], fake_priv[1]);
     printf("\n");
     
@@ -135,10 +147,11 @@ int main(void) {
     printf("\n");
     
     printf("[verifying signature with public_key..]\n");
-    if (micro_verify(message, pub, fake_sig))
+    if (micro_verify(message, pub, fake_sig, hash, decrypted_sig))
         printf("❌ Attack Passed\n");
     else
         printf("✅ Attack Detected\n");
-
+    printf("Hash         :    %02X %02X %02X\n", hash[0], hash[1], hash[2]);
+    printf("decrypted_sig:    %02X %02X %02X\n", decrypted_sig[0], decrypted_sig[1], decrypted_sig[2]);
     return 0;
 }
