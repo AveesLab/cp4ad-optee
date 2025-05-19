@@ -96,20 +96,6 @@ TEE_Result generate_public_key(TEE_Param params[4])
     return TEE_SUCCESS;
 }
 
-// void mini_hash(const unsigned char *data, size_t len, unsigned char hash[3]) {
-//     unsigned int h = (hash[0] << 16) | (hash[1] << 8) | hash[2];
-
-//     for (size_t i = 0; i < len; i++) {
-//         h ^= (data[i] + i * 13);
-//         h = (h << 5) | (h >> (27));
-//     }
-
-//     h &= 0xFFFFFF;
-//     hash[0] = (h >> 16) & 0xFF;
-//     hash[1] = (h >> 8) & 0xFF;
-//     hash[2] = h & 0xFF;
-// }
-
 TEE_Result micro_sign(TEE_Param params[4]) {
     TEE_ObjectHandle obj;
     TEE_ObjectInfo object_info;
@@ -176,28 +162,3 @@ TEE_Result micro_verify(TEE_Param params[4]) {
     }
     return TEE_SUCCESS;
 }
-
-
-
-    // unsigned char buffer[64];
-    // TEE_MemMove(buffer, message, msg_len);
-
-    // // unsigned char derived_priv[2];
-    // // for (int i = 0; i < 2; i++) {
-    // //     derived_priv[i] = public_key[i] ^ 0xA5;
-    // // }
-    // // TEE_MemMove(buffer + msg_len, derived_priv, 2);
-    // TEE_MemMove(buffer + msg_len, public_key, 2);
-
-
-    // // mini_hash(buffer, msg_len + 2, hash);
-    // mini_hash(buffer, msg_len + 2, hash);
-
-    // if (memcmp(signature, hash, 3) != 0) {
-    //     return TEE_ERROR_SIGNATURE_INVALID;
-    // }
-    // TEE_MemMove(params[1].memref.buffer, hash, 3);
-    // params[1].memref.size = 3;
-    // return TEE_SUCCESS;
-
-

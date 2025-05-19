@@ -118,7 +118,7 @@ int save_hex_object(TEEC_Session *sess, const char *key) {
     }
     
     printf("convert data to hex\n");
-    char data_byte[2];
+    unsigned char data_byte[2];
     string_to_bytes(data, data_byte);
 
     memset(&op, 0, sizeof(op));

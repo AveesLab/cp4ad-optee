@@ -1,5 +1,14 @@
 #include "crypto.h"
 
+void print_bytes(const unsigned char *bytes, size_t len) {
+    for (size_t i = 0; i < len; i++) {
+        printf("0x%02X", bytes[i]);
+        if (i < len - 1)
+            printf(", ");
+    }
+    printf("\n");
+}
+
 void string_to_bytes(const char in[7], char out[2]) {
     if (strlen(in) != 6 || in[0] != '0' || in[1] != 'x') {
         return -1;
@@ -19,14 +28,6 @@ void bytes_to_string(const char in[2], char out[7]) {
     sprintf(out, "0x%02X%02X", in[0], in[1]);
 }
 
-void print_bytes(const unsigned char *bytes, size_t len) {
-    for (size_t i = 0; i < len; i++) {
-        printf("0x%02X", bytes[i]);
-        if (i < len - 1)
-            printf(", ");
-    }
-    printf("\n");
-}
 
 int set_whitelist(TEEC_Session *sess) {
     save_object(sess, "whitelist");
@@ -38,14 +39,21 @@ int set_priv_key(TEEC_Session *sess) {
     return 0;
 }
 
-int generate_public_key(TEEC_Session *sess, unsigned char *public_key) {
+// write here - fill the right key(private_key / public_key)
+int generate_public_key(TEEC_Session *sess, unsigned char *) {
+//
     TEEC_Result res;
     TEEC_Operation op;
     uint32_t origin;
 
     memset(&op, 0, sizeof(op));
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_OUTPUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
-    op.params[0].tmpref.buffer = public_key;
+    // write here - fill the right PARAM_TYPES //
+    op.paramTypes = TEEC_PARAM_TYPES(, TEEC_NONE, TEEC_NONE, TEEC_NONE);
+    //
+
+    // write here - fill the right key(private_key / public_key)
+    op.params[0].tmpref.buffer = ;
+    //
     op.params[0].tmpref.size = 3;
     res = TEEC_InvokeCommand(sess, CMD_GENERATE_PUBLIC_KEY, &op, &origin);
     if (res != TEEC_SUCCESS) {
@@ -61,16 +69,25 @@ int generate_public_key(TEEC_Session *sess, unsigned char *public_key) {
     return 0;
 }
 
-int micro_sign(TEEC_Session *sess, const unsigned char *message, unsigned char *signature) {
+// write here - fill the right value
+int micro_sign(TEEC_Session *sess, const unsigned char *, unsigned char *) {
+//
     TEEC_Result res;
     TEEC_Operation op;
     uint32_t origin;
 
     memset(&op, 0, sizeof(op));
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_INPUT, TEEC_MEMREF_TEMP_OUTPUT, TEEC_NONE, TEEC_NONE);
-    op.params[0].tmpref.buffer = message;
+    // write here - fill the right PARAM_TYPES //
+    op.paramTypes = TEEC_PARAM_TYPES(, , TEEC_NONE, TEEC_NONE);
+    //
+
+    // write here - fill the right value
+    op.params[0].tmpref.buffer = ;
+    //
     op.params[0].tmpref.size = 5;
-    op.params[1].tmpref.buffer = signature;
+    // write here - fill the right value
+    op.params[1].tmpref.buffer = ;
+    //
     op.params[1].tmpref.size = 3;
     res = TEEC_InvokeCommand(sess, CMD_SIGN, &op, &origin);
     if (res != TEEC_SUCCESS) {
@@ -86,20 +103,27 @@ int micro_sign(TEEC_Session *sess, const unsigned char *message, unsigned char *
     return 0;
 }
 
-int micro_verify(TEEC_Session *sess, const unsigned char *message,
-                 const unsigned char *signature,
-                 const unsigned char *public_key) {
+// write here - fill the right values //
+int micro_verify(TEEC_Session *sess, const unsigned char *, const unsigned char *, const unsigned char *) {
+//
     TEEC_Result res;
     TEEC_Operation op;
     uint32_t origin;
     
     memset(&op, 0, sizeof(op));
-    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_INPUT, TEEC_MEMREF_TEMP_INPUT, TEEC_MEMREF_TEMP_INPUT, TEEC_VALUE_OUTPUT);
-    op.params[0].tmpref.buffer = message;
+    // write here - fill the right PARAM_TYPES //
+    op.paramTypes = TEEC_PARAM_TYPES(, , , );
+    // write here - fill the right value
+    op.params[0].tmpref.buffer = ;
+    //
     op.params[0].tmpref.size = 5;
-    op.params[1].tmpref.buffer = signature;
+    // write here - fill the right value
+    op.params[1].tmpref.buffer = ;
+    //
     op.params[1].tmpref.size = 3;
-    op.params[2].tmpref.buffer = public_key;
+    // write here - fill the right value
+    op.params[2].tmpref.buffer = ;
+    //
     op.params[2].tmpref.size = 3;
     op.params[3].value.a = 0;
     res = TEEC_InvokeCommand(sess, CMD_VERIFY, &op, &origin);
