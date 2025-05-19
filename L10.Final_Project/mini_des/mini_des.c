@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-#define DES_KEY_SIZE 8
 
-uint64_t key = 0x89ABCDEF01234567;
+#define BLOCK_SIZE 5
+#define KEY_SIZE 5
+
+// 5바이트 (40비트) 키
+uint64_t key = 0xABCDE12345;  // 상위 3바이트 무시됨
 
 void print_hex(const char *label, const unsigned char *data, size_t len) {
     printf("%s: ", label);
@@ -13,101 +16,81 @@ void print_hex(const char *label, const unsigned char *data, size_t len) {
     printf("\n");
 }
 
-// Feistel 함수 (간단한 XOR + 회전)
-uint32_t feistel(uint32_t half, uint64_t key) {
-    half ^= (uint32_t)(key & 0xFFFFFFFF);  // key 하위 32비트와 XOR
-    return (half << 3) | (half >> (32 - 3));  // 3비트 왼쪽 회전
+// 간단한 Feistel 함수 (XOR + 3비트 회전)
+uint32_t feistel(uint32_t half, uint64_t key40) {
+    uint32_t key_part = (uint32_t)(key40 & 0xFFFFFFFF);  // 하위 32비트만 사용
+    half ^= key_part;
+    return (half << 3) | (half >> (32 - 3));
 }
 
-// DES-like 암복호화 함수 (2라운드)
-uint64_t simple_des(uint64_t input, uint64_t key, int encrypt) {
-    uint32_t left  = (input >> 32) & 0xFFFFFFFF;
-    uint32_t right = input & 0xFFFFFFFF;
+// 간단한 DES-like 암복호화 (2라운드, 40비트 키)
+uint64_t simple_des(uint64_t input, uint64_t key40, int encrypt) {
+    uint32_t left  = (input >> 20) & 0xFFFFF;  // 20비트
+    uint32_t right = input & 0xFFFFF;          // 20비트
 
     if (encrypt) {
         for (int i = 0; i < 2; i++) {
             uint32_t temp = right;
-            right = left ^ feistel(right, key);
+            right = left ^ (feistel(right, key40) & 0xFFFFF);  // 20비트 마스킹
             left = temp;
         }
     } else {
         for (int i = 0; i < 2; i++) {
             uint32_t temp = left;
-            left = right ^ feistel(left, key);
+            left = right ^ (feistel(left, key40) & 0xFFFFF);
             right = temp;
         }
     }
 
-    return ((uint64_t)left << 32) | right;
+    return (((uint64_t)left << 20) | right) & 0xFFFFFFFFFFULL;  // 40비트 출력
 }
 
-// 8바이트 블록 → 64비트 정수로
-uint64_t bytes_to_uint64(unsigned char *block) {
+// 5바이트 → uint64_t (하위 40비트 사용)
+uint64_t bytes_to_uint40(const unsigned char *block) {
     uint64_t result = 0;
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < BLOCK_SIZE; i++) {
         result = (result << 8) | block[i];
     }
-    return result;
+    return result & 0xFFFFFFFFFFULL;  // 하위 40비트만 유지
 }
 
-// 64비트 정수 → 8바이트 블록
-void uint64_to_bytes(uint64_t value, unsigned char *block) {
-    for (int i = 4; i >= 0; i--) {
+// uint64_t → 5바이트
+void uint40_to_bytes(uint64_t value, unsigned char *block) {
+    for (int i = BLOCK_SIZE - 1; i >= 0; i--) {
         block[i] = value & 0xFF;
         value >>= 8;
     }
 }
+
 void encrypt(unsigned char *plaintext, unsigned char *encrypted) {
-    uint64_t plain64 = bytes_to_uint64(plaintext);
-    uint64_t cipher64 = simple_des(plain64, key, 1);
-    uint64_to_bytes(cipher64, encrypted);
+    uint64_t plain40 = bytes_to_uint40(plaintext);
+    uint64_t cipher40 = simple_des(plain40, key, 1);
+    uint40_to_bytes(cipher40, encrypted);
 }
 
 void decrypt(unsigned char *encrypted, unsigned char *decrypted) {
-    uint64_t cipher64 = bytes_to_uint64(encrypted);
-    uint64_t plain64 = simple_des(cipher64, key, 0);
-    uint64_to_bytes(plain64, decrypted);
+    uint64_t cipher40 = bytes_to_uint40(encrypted);
+    uint64_t plain40 = simple_des(cipher40, key, 0);
+    uint40_to_bytes(plain40, decrypted);
 }
 
 int main() {
-    // char plaintext[] = "ABCDE";
-    // char encrypted[6] = {0};
-    // char decrypted[6] = {0};
-    // printf("Input    : %s\n", plaintext);
-    
-    // encrypt(plaintext, encrypted);
-    // printf("Encrypted: %s\n", encrypted);
-    // print_hex("Encrypted", encrypted, 5);
+    unsigned char buf_send[BLOCK_SIZE] = {'A', 'B', 'C', 'D', 'E'};
+    unsigned char encrypted[BLOCK_SIZE] = {0};
+    unsigned char decrypted[BLOCK_SIZE] = {0};
 
-    // decrypt(encrypted, decrypted);
-    // printf("Decrypted: %s\n", decrypted);
-
-
-    unsigned char buf_send[8] = {'A', 'B', 'C', 'D', 'E', 0, 0, 0};
     printf("Input    : %s\n", buf_send);
-    print_hex("Input", buf_send, 8);
+    print_hex("Input", buf_send, BLOCK_SIZE);
 
-    encrypt(buf_send, buf_send);
-    printf("Encrypted: %s\n", buf_send);
-    print_hex("Encrypted", buf_send, 8);
+    encrypt(buf_send, encrypted);
+    printf("Encrypted: ");
+    for (int i = 0; i < BLOCK_SIZE; i++) printf("%c", encrypted[i]);
+    printf("\n");
+    print_hex("Encrypted", encrypted, BLOCK_SIZE);
 
-    decrypt(buf_send, buf_send);
-    printf("Decrypted: %s\n", buf_send);
-    print_hex("Decrypted", buf_send, 8);
+    decrypt(encrypted, decrypted);
+    printf("Decrypted: %s\n", decrypted);
+    print_hex("Decrypted", decrypted, BLOCK_SIZE);
 
-    /*
-    struct can_msg send_msg = {0};
-    send_msg.id = 0x123;
-    unsigned char len = 5;
-    send_msg.len = len;
-    unsigned char buf_send[8];
-    buf_send[0] = ( camera_adc >> 0 ) & 0xff;
-    buf_send[1] = ( lidar_adc >> 8 ) & 0xff;
-    buf_send[2] = ( lidar_adc >> 0) & 0xff;
-    buf_send[3] = (throttle_adc >> 8) & 0xff;
-    buf_send[4] = ( throttle_adc >> 0) & 0xff;
-    send_msg.buf = buf_send;
-    CAN_sendMsg(send_msg);
-    */
     return 0;
 }
