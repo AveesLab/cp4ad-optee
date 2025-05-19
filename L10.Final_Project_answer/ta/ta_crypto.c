@@ -96,20 +96,6 @@ TEE_Result generate_public_key(TEE_Param params[4])
     return TEE_SUCCESS;
 }
 
-// void mini_hash(const unsigned char *data, size_t len, unsigned char hash[3]) {
-//     unsigned int h = (hash[0] << 16) | (hash[1] << 8) | hash[2];
-
-//     for (size_t i = 0; i < len; i++) {
-//         h ^= (data[i] + i * 13);
-//         h = (h << 5) | (h >> (27));
-//     }
-
-//     h &= 0xFFFFFF;
-//     hash[0] = (h >> 16) & 0xFF;
-//     hash[1] = (h >> 8) & 0xFF;
-//     hash[2] = h & 0xFF;
-// }
-
 TEE_Result micro_sign(TEE_Param params[4]) {
     TEE_ObjectHandle obj;
     TEE_ObjectInfo object_info;

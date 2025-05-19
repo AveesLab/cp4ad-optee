@@ -1,5 +1,14 @@
 #include "crypto.h"
 
+void print_bytes(const unsigned char *bytes, size_t len) {
+    for (size_t i = 0; i < len; i++) {
+        printf("0x%02X", bytes[i]);
+        if (i < len - 1)
+            printf(", ");
+    }
+    printf("\n");
+}
+
 void string_to_bytes(const char in[7], char out[2]) {
     if (strlen(in) != 6 || in[0] != '0' || in[1] != 'x') {
         return -1;
@@ -19,14 +28,6 @@ void bytes_to_string(const char in[2], char out[7]) {
     sprintf(out, "0x%02X%02X", in[0], in[1]);
 }
 
-void print_bytes(const unsigned char *bytes, size_t len) {
-    for (size_t i = 0; i < len; i++) {
-        printf("0x%02X", bytes[i]);
-        if (i < len - 1)
-            printf(", ");
-    }
-    printf("\n");
-}
 
 int set_whitelist(TEEC_Session *sess) {
     save_object(sess, "whitelist");

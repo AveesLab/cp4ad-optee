@@ -95,7 +95,7 @@ int micro_verify(const char message[5], const char pub[3], const char sig[3], ch
 
 int main(void) {
     char message[5] = {0x11, 0x22, 0x33, 0x44, 0x55};
-    char priv[2]   = {0x12, 0x34};
+    char priv[2]   = {0x12, 0xAB};
     char pub[3];
     char sig[3];
     char hash[3];

@@ -75,14 +75,53 @@ void decrypt(unsigned char *encrypted, unsigned char *decrypted) {
 }
 
 int main() {
+    // SENSOR //
+    /*
+    struct can_msg send_msg = {0};
+    send_msg.id = 0x123;
+    unsigned char len = 5;
+    send_msg.len = len;
+    unsigned char buf_send[8];
+    buf_send[0] = ( camera_adc >> 0 ) & 0xff;
+    buf_send[1] = ( lidar_adc >> 8 ) & 0xff;
+    buf_send[2] = ( lidar_adc >> 0) & 0xff;
+    buf_send[3] = (throttle_adc >> 8) & 0xff;
+    buf_send[4] = ( throttle_adc >> 0) & 0xff;
+    send_msg.buf = buf_send;
+    CAN_sendMsg(send_msg);
+    */
+
     unsigned char buf_send[8] = {'A', 'B', 'C', 'D', 'E'};
     printf("Input    : %s\n", buf_send);
     print_hex("Input", buf_send, 8);
 
     encrypt(buf_send, buf_send);
-    printf("Encrypted: ");
+    printf("Encrypted: %s\n", buf_send);
     print_hex("Encrypted", buf_send, 8);
 
+
+
+
+    // DISPLAY //
+    /*
+    struct can_msg msg = {0};
+	CAN_readMsg(&msg);
+
+	camera = 0;
+	lidar = 0;
+	throttle = 0;
+	
+	camera |= ((uint32_t)msg.buf[0]<<0);
+
+
+	lidar |= ((uint32_t)msg.buf[1]<<8);
+	lidar |= ((uint32_t)msg.buf[2]<<0);
+
+	throttle |= ((uint32_t)msg.buf[3]<<8);
+	throttle |= ((uint32_t)msg.buf[4]<<0);
+    */
+
+    // buf_send -> msg.buf
     decrypt(buf_send, buf_send);
     printf("Decrypted: %s\n", buf_send);
     print_hex("Decrypted", buf_send, 8);
