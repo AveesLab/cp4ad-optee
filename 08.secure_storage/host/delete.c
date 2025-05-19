@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 
     memset(&op, 0, sizeof(op));
     op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_INPUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
-    op.params[0].tmpref.buffer = (void *)key;
+    op.params[0].tmpref.buffer = key;
     op.params[0].tmpref.size   = key_len;
     TEEC_InvokeCommand(&sess, CMD_DELETE, &op, &origin);
 

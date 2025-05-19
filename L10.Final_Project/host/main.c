@@ -24,17 +24,17 @@ int main(int argc, char *argv[]) {
     /////////////////////////
     // secure_storage TEST //
     /////////////////////////
-    // printf("test save_object\n\n");
-    // save_object(&sess, "whitelist");
-    // printf("finished save_object\n\n");
+    printf("test save_object\n\n");
+    save_object(&sess, "whitelist");
+    printf("finished save_object\n\n");
 
-    // printf("test load_object\n\n");
-    // load_object(&sess, "whitelist");
-    // printf("finished load_object\n\n");
+    printf("test load_object\n\n");
+    load_object(&sess, "whitelist");
+    printf("finished load_object\n\n");
 
-    // printf("test delete_object\n\n");
-    // delete_object(&sess, "whitelist");
-    // printf("finished delete_object\n\n");
+    printf("test delete_object\n\n");
+    delete_object(&sess, "whitelist");
+    printf("finished delete_object\n\n");
 
     //////////////////////
     // print_bytes TEST //

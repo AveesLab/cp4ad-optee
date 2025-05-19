@@ -68,7 +68,7 @@ int main() {
     encrypted[8] = '\0';
     printf("Input     : %s\n", plaintext);
     printf("Encrypted     : %s\n", encrypted);
-    decrypt(encrypted, plaintext);
+    decrypt(plaintext, plaintext);
     decrypted[8] = '\0';
 
     

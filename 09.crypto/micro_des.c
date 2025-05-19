@@ -4,7 +4,7 @@
 #define DES_KEY_SIZE 8
 
 
-uint64_t key = 0x0123456789ABCDEF;
+uint64_t key = 0x89ABCDEF01234567;
 
 // Feistel 함수 (간단한 XOR + 회전)
 uint32_t feistel(uint32_t half, uint64_t key) {
@@ -60,19 +60,20 @@ void decrypt(unsigned char *encrypted, unsigned char *decrypted) {
 
 // 테스트
 int main() {
-    unsigned char plaintext[] = "ABCDEFGH";   // 64비트 입력
-    unsigned char encrypted[DES_KEY_SIZE+1], decrypted[DES_KEY_SIZE+1];
+    char plaintext[] = "12345678";   // 64비트 입력
+    char encrypted[DES_KEY_SIZE+1] = {0};
+    char decrypted[DES_KEY_SIZE+1] = {0};
     printf("Input     : %s\n", plaintext);
-    printf("Encrypted     : %s\n", encrypted);
-    encrypt(plaintext, encrypted);
-    encrypted[8] = '\0';
-    printf("Input     : %s\n", plaintext);
-    printf("Encrypted     : %s\n", encrypted);
-    decrypt(encrypted, plaintext);
-    decrypted[8] = '\0';
-
+    // printf("Encrypted     : %s\n", encrypted);
     
-    for (int i = 0; i < 8; i++) printf("%02X ", encrypted[i]);
+    encrypt(plaintext, plaintext);
+    encrypted[8] = '\0';
+    // printf("Input     : %s\n", plaintext);
+    printf("Encrypted     : %s\n", plaintext);
+
+    decrypt(plaintext, plaintext);
+    decrypted[8] = '\0';    
+    // for (int i = 0; i < 8; i++) printf("%02X ", encrypted[i]);
     printf("\nDecrypted : %s\n", plaintext);
 
     return 0;

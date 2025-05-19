@@ -24,23 +24,23 @@ int main(int argc, char *argv[]) {
     /////////////////////////
     // secure_storage TEST //
     /////////////////////////
-    // printf("test save_object\n\n");
-    // save_object(&sess, "whitelist");
-    // printf("finished save_object\n\n");
+    printf("test save_object\n\n");
+    save_object(&sess, "whitelist");
+    printf("finished save_object\n\n");
 
-    // printf("test load_object\n\n");
-    // load_object(&sess, "whitelist");
-    // printf("finished load_object\n\n");
+    printf("test load_object\n\n");
+    load_object(&sess, "whitelist");
+    printf("finished load_object\n\n");
 
-    // printf("test delete_object\n\n");
-    // delete_object(&sess, "whitelist");
-    // printf("finished delete_object\n\n");
+    printf("test delete_object\n\n");
+    delete_object(&sess, "whitelist");
+    printf("finished delete_object\n\n");
 
     //////////////////////
     // print_bytes TEST //
     //////////////////////
-    // unsigned char hash[3] = {0x11, 0x22, 0x33};
-    // print_bytes(hash, 3);
+    unsigned char hash[3] = {0x11, 0x22, 0x33};
+    print_bytes(hash, 3);
 
     //////////////////////////
     // string_to_bytes TEST //
@@ -56,9 +56,9 @@ int main(int argc, char *argv[]) {
     // printf("Public key string: %s\n", public_key_str);
 
     
-    // set_whitelist(&sess);
-    // set_priv_key(&sess);
-    // printf("\n");
+    set_whitelist(&sess);
+    set_priv_key(&sess);
+    printf("\n");
 
     unsigned char public_key[3];
     generate_public_key(&sess, public_key);
