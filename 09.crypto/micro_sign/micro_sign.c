@@ -97,31 +97,44 @@ int main(void) {
     unsigned char pub[PUBLEN];
     unsigned char sig[SIGLEN];
 
+    printf("Private Key:  %02X %02X\n", priv[0], priv[1]);
+    printf("\n");
+
+    printf("[generating public_key with private_key..]\n");
     generate_public_key(priv, pub);
-    micro_sign(message, priv, sig);
+    printf("Public Key:   %02X %02X %02X\n", pub[0], pub[1], pub[2]);
+    printf("\n");
 
     printf("Message:      ");
     for (int i = 0; i < MSGLEN; i++)
         printf("%02X ", message[i]);
     printf("\n");
-    printf("Private Key:  %02X %02X\n", priv[0], priv[1]);
-    printf("Public Key:   %02X %02X %02X\n", pub[0], pub[1], pub[2]);
-    printf("Signature:    %02X %02X %02X\n", sig[0], sig[1], sig[2]);
 
+    printf("[signing with private_key..]\n");
+    micro_sign(message, priv, sig);
+    printf("Signature:    %02X %02X %02X\n", sig[0], sig[1], sig[2]);
+    printf("\n");
+
+    printf("[verifying signature with public_key..]\n");
     if (micro_verify(message, pub, sig))
         printf("✅ Verified\n");
     else
         printf("❌ Invalid\n");
 
-    unsigned char fake_priv[PRIVLEN] = {0xFF, 0xEE};
-    unsigned char fake_sig[SIGLEN];
-    micro_sign(message, fake_priv, fake_sig);
 
     printf("\n-- Attack Test --\n");
+    unsigned char fake_priv[PRIVLEN] = {0xFF, 0xEE};
+    unsigned char fake_sig[SIGLEN];
     printf("Fake Priv:      %02X %02X\n", fake_priv[0], fake_priv[1]);
+    printf("\n");
+    
+    printf("[signing with fake_key..]\n");
+        micro_sign(message, fake_priv, fake_sig);
     printf("Fake Signature: %02X %02X %02X\n",
            fake_sig[0], fake_sig[1], fake_sig[2]);
-
+    printf("\n");
+    
+    printf("[verifying signature with public_key..]\n");
     if (micro_verify(message, pub, fake_sig))
         printf("❌ Attack Passed\n");
     else

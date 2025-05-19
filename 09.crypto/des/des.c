@@ -13,29 +13,24 @@ void print_hex(const char *label, const unsigned char *data, size_t len) {
 void des_example() {
     unsigned char key[] = "mykey123";       // 64bit key
     unsigned char input[] = "ABCDEFGH";     // 64bit plaintext
-    unsigned char output[DES_KEY_SIZE+1] = {0};
+    unsigned char encrypted[DES_KEY_SIZE+1] = {0};
     unsigned char decrypted[DES_KEY_SIZE+1] = {0};
-    printf("Input: %s\n", input);
-    mbedtls_des_context ctx;
 
+    mbedtls_des_context ctx;
     mbedtls_des_init(&ctx);
 
     // Encrypt
     mbedtls_des_setkey_enc(&ctx, key);
-    mbedtls_des_crypt_ecb(&ctx, input, output);
+    mbedtls_des_crypt_ecb(&ctx, input, encrypted);
     
-
-
-
     // Decrypt
     mbedtls_des_setkey_dec(&ctx, key);
-    mbedtls_des_crypt_ecb(&ctx, output, decrypted);
+    mbedtls_des_crypt_ecb(&ctx, encrypted, decrypted);
     
-    printf("Input (string): %s\n", input);
-    printf("Encrypted: %s\n", output);
-    print_hex("Encrypted", output, 8);
-    printf("Key (string): %s\n", key);
-    printf("Decrypted (string): %s\n", decrypted);
+    printf("Input     : %s\n", input);
+    printf("Encrypted : %s\n", encrypted);
+    print_hex("Encrypted", encrypted, 8);
+    printf("Decrypted : %s\n", decrypted);
     
     mbedtls_des_free(&ctx);
 }

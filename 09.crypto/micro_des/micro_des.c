@@ -3,8 +3,15 @@
 #include <string.h>
 #define DES_KEY_SIZE 8
 
-
 uint64_t key = 0x89ABCDEF01234567;
+
+void print_hex(const char *label, const unsigned char *data, size_t len) {
+    printf("%s: ", label);
+    for (size_t i = 0; i < len; i++) {
+        printf("%02X ", data[i]);
+    }
+    printf("\n");
+}
 
 // Feistel 함수 (간단한 XOR + 회전)
 uint32_t feistel(uint32_t half, uint64_t key) {
@@ -63,16 +70,17 @@ void decrypt(unsigned char *encrypted, unsigned char *decrypted) {
 }
 
 int main() {
-    char plaintext[] = "12345678";
+    char plaintext[] = "ABCDEFGH";
     char encrypted[DES_KEY_SIZE+1] = {0};
     char decrypted[DES_KEY_SIZE+1] = {0};
-    printf("Input     : %s\n", plaintext);
+    printf("Input    : %s\n", plaintext);
     
     encrypt(plaintext, encrypted);
-    printf("Encrypted     : %s\n", encrypted);
+    printf("Encrypted: %s\n", encrypted);
+    print_hex("Encrypted", encrypted, 8);
 
     decrypt(encrypted, decrypted);
-    printf("Decrypted : %s\n", decrypted);
+    printf("Decrypted: %s\n", decrypted);
 
     return 0;
 }
