@@ -45,19 +45,15 @@ static TEE_Result load_object(TEE_Param params[4])
     TEE_ObjectHandle obj;
     TEE_ObjectInfo object_info;
     
-    char *key;
-    size_t key_len;
-    char *data;
-    size_t data_len;
-
     // write here //
-    key_len = ;
-    key = ;
+    size_t key_len = ;
+    char *key key = ;
     TEE_MemMove();
     TEE_OpenPersistentObject();
 
     TEE_GetObjectInfo1(obj, &object_info);
-    data = TEE_Malloc(object_info.dataSize, 0);
+    char *data = TEE_Malloc(object_info.dataSize, 0);
+    size_t data_len = 0;
     TEE_ReadObjectData(obj, data, object_info.dataSize, &data_len);
     TEE_MemMove(params[1].memref.buffer, data, object_info.dataSize);
 
