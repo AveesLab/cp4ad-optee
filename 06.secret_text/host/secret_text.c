@@ -11,9 +11,8 @@ void direct_access();
 
 int main(int argc, char *argv[]) {
     char a[]="fourty";
-    printf("%d", strlen(a));
     if (argc < 2) {
-        printf("\nUsage: %s <mode>\n", argv[0]);
+        printf("Usage: %s <mode>\n", argv[0]);
         printf("  0 - TA Access (InvokeCommand)\n");
         printf("  1 - Direct Access (Memory address access, may cause Segmentation Fault)\n");
     } else {
@@ -42,7 +41,7 @@ void ta_access() {
     TEEC_UUID uuid = {0x54eac490, 0x4f7a, 0x4db5, {0x8f, 0xd7, 0x22, 0x1b, 0x7a, 0x22, 0x39, 0xea}};
     TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &err_origin);
 
-    printf("\n[TA Access] Getting secret_text using InvokeCommand...\n");
+    printf("[TA Access] Getting secret_text using InvokeCommand...\n");
 
     memset(&op, 0, sizeof(op));
     op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_OUTPUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
@@ -68,7 +67,7 @@ void direct_access() {
     TEEC_UUID uuid = {0x54eac490, 0x4f7a, 0x4db5, {0x8f, 0xd7, 0x22, 0x1b, 0x7a, 0x22, 0x39, 0xea}};
     TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &err_origin);
 
-    printf("\n[Direct Access] Getting secret_text address...\n");
+    printf("[Direct Access] Getting secret_text address...\n");
 
     memset(&op, 0, sizeof(op));
     op.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_OUTPUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
