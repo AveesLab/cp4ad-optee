@@ -50,14 +50,31 @@ static uint32_t modexp(uint32_t b, uint32_t e, uint32_t m) {
 }
 
 static void derive_rsa(const unsigned char priv[2], uint32_t *n, uint32_t *d) {
-    uint32_t seed = (priv[0]<<8)|priv[1];
-    uint32_t p = ((seed>>4)&0x0FFF)|0x0800;
-    while (!is_prime(p)) p++;
-    uint32_t q = (seed&0x0FFF)|0x0800;
-    while (!is_prime(q)) q++;
-    *n = p*q;
-    uint32_t phi = (p-1)*(q-1);
-    *d = (uint32_t)modinv32(17, phi);
+    uint32_t seed = (priv[0] << 8) | priv[1];
+
+    while (1) {
+        uint32_t p = ((seed >> 4) & 0x0FFF) | 0x0800;
+        while (!is_prime(p)) p++;
+        uint32_t q = (seed & 0x0FFF) | 0x0800;
+        while (!is_prime(q)) q++;
+
+        if (p == q) {
+            seed++;
+            continue;
+        }
+
+        *n = p * q;
+        uint32_t phi = (p - 1) * (q - 1);
+        int32_t dinv = modinv32(17, phi);
+
+        if (dinv != -1) {
+            *d = (uint32_t)dinv;
+            break;
+        }
+
+        // 실패하면 seed를 변경해서 다시 시도
+        seed++;
+    }
 }
 
 TEE_Result generate_public_key(TEE_Param params[4])
@@ -66,7 +83,6 @@ TEE_Result generate_public_key(TEE_Param params[4])
     TEE_ObjectInfo object_info;
     
     unsigned char *private_key;
-    size_t priv_len = 2;
     unsigned char *public_key;
     size_t pub_len = 3;
     public_key = TEE_Malloc(pub_len, 0);
@@ -101,8 +117,6 @@ TEE_Result micro_sign(TEE_Param params[4]) {
     TEE_ObjectInfo object_info;
 
     unsigned char *message = params[0].memref.buffer;
-    size_t msg_len = params[0].memref.size;
-
     unsigned char private_key[2];
     unsigned char signature[3];
 
@@ -135,17 +149,11 @@ TEE_Result micro_sign(TEE_Param params[4]) {
 }
 
 TEE_Result micro_verify(TEE_Param params[4]) {
-    TEE_ObjectHandle obj;
-    TEE_ObjectInfo object_info;
-
     unsigned char *message = params[0].memref.buffer;
-    size_t msg_len = params[0].memref.size;
 
     unsigned char *signature = params[1].memref.buffer;
-    size_t signature_len = params[1].memref.size;
 
     unsigned char *public_key = params[2].memref.buffer;
-    size_t pub_key_len = params[2].memref.size;
 
     unsigned char h24[3];
     mini_hash24(message, 5, h24);
@@ -162,28 +170,3 @@ TEE_Result micro_verify(TEE_Param params[4]) {
     }
     return TEE_SUCCESS;
 }
-
-
-
-    // unsigned char buffer[64];
-    // TEE_MemMove(buffer, message, msg_len);
-
-    // // unsigned char derived_priv[2];
-    // // for (int i = 0; i < 2; i++) {
-    // //     derived_priv[i] = public_key[i] ^ 0xA5;
-    // // }
-    // // TEE_MemMove(buffer + msg_len, derived_priv, 2);
-    // TEE_MemMove(buffer + msg_len, public_key, 2);
-
-
-    // // mini_hash(buffer, msg_len + 2, hash);
-    // mini_hash(buffer, msg_len + 2, hash);
-
-    // if (memcmp(signature, hash, 3) != 0) {
-    //     return TEE_ERROR_SIGNATURE_INVALID;
-    // }
-    // TEE_MemMove(params[1].memref.buffer, hash, 3);
-    // params[1].memref.size = 3;
-    // return TEE_SUCCESS;
-
-

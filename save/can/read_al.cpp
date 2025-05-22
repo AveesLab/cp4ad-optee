@@ -1,13 +1,12 @@
 /* A simple SocketCAN example */
 #include <stdio.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
 #include <net/if.h>
-#include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/ioctl.h>
+#include <sys/time.h>
 #include <linux/can.h>
 #include <linux/can/raw.h>
 int soc;
@@ -63,23 +62,15 @@ void read_port()
                 recvbytes = read(soc, &frame, sizeof(struct can_frame));
                 if(recvbytes) { 
                     unsigned int sum = 0;
+                
                     /* ==================== Fill your code to receive data ==================*/
-                    // if(frame.can_id == 0x123) {
+                    if(frame.can_id == 0x123) {
                         // sum = (frame.data[0] << 24) + (frame.data[1] << 16) + (frame.data[2] << 8) + frame.data[3];
-                        // printf("--------------------------------------------\n");
-                        // printf("message ID: %x\n", frame.can_id);
-                        // printf("sum = %u\n", sum);
-
-                        printf("enc: %x ", frame.data[0]);
-                        printf(" %x ", frame.data[1]);
-                        printf(" %x ", frame.data[2]);
-                        printf(" %x ", frame.data[3]);
-                        printf(" %x ", frame.data[4]);
-                        printf(" %x ", frame.data[5]);
-                        printf(" %x ", frame.data[6]);
-                        printf(" %x \n", frame.data[7]);
-                    // }
-                }     
+                        printf("--------------------------------------------\n");
+                        printf("message ID: %x\n", frame.can_id);
+                        printf("sum = %u\n", sum);
+                    }
+                }
             }
         }
     }

@@ -100,7 +100,7 @@ int delete_object(TEEC_Session *sess, const char *key) {
     return 0;
 }
 
-int save_hex_object(TEEC_Session *sess, const char *key) {
+int save_hex_object(TEEC_Session *sess, const unsigned char *key) {
     TEEC_Result res;
     TEEC_Operation op;
     uint32_t origin;

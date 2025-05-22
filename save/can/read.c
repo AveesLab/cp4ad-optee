@@ -11,7 +11,6 @@
 #include <linux/can.h>
 #include <linux/can/raw.h>
 int soc;
-int read_can_port;
 int open_port(const char *port)
 {
     struct ifreq ifr;
@@ -42,52 +41,33 @@ int open_port(const char *port)
 
 
 /* this is just an example, run in a thread */
-void read_port()
+void read_port(int can_id)
 {
     struct can_frame frame;
     frame.can_dlc = 8;
     int recvbytes = 0;
-    read_can_port = 1;
-    printf("1!\n");
-    while(read_can_port)
+    while(1)
     {
-    printf("1!\n");
-        
         struct timeval timeout = {1, 0};
         fd_set readSet;
         FD_ZERO(&readSet);
         FD_SET(soc, &readSet);
-    printf("1!\n");
-
         if (select((soc + 1), &readSet, NULL, NULL, &timeout) >= 0) {
-            printf("11111!\n");
-
-            if (!read_can_port) {
-                printf("122222222!\n");
-
-		        printf("error!");
-                break;
-
-            }
             if (FD_ISSET(soc, &readSet)) {
-                printf("1333333!\n");
-
                 recvbytes = read(soc, &frame, sizeof(struct can_frame));
-                if(recvbytes) { 
+                if(recvbytes) {
                     unsigned int sum = 0;
-                    /* ==================== Fill your code to receive data ==================*/
-                if(frame.can_id == 0x123) {
-                sum = (frame.data[0] << 24) + (frame.data[1] << 16) + (frame.data[2] << 8) + frame.data[3];
-                printf("--------------------------------------------\n");
-                printf("message ID: %x\n", frame.can_id);
-                printf("sum = %u\n", sum);
+                    if(frame.can_id == can_id) {
+                        sum = (frame.data[0] << 24) + (frame.data[1] << 16) + (frame.data[2] << 8) + frame.data[3];
+                        printf("--------------------------------------------\n");
+                        printf("message ID: %x\n", frame.can_id);
+                        printf("sum = %u\n", sum);
                     }
-                  
-                        
+                }
             }
         }
     }
-}}
+}
 
 
 int close_port()
@@ -97,12 +77,9 @@ int close_port()
 }
 int main(void)
 {
-    printf("1!\n\n");
     
     open_port("can0");
-    printf("1!\n\n");
-
-    read_port();
+    read_port(0x123);
    
     return 0;
 }

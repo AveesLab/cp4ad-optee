@@ -79,11 +79,6 @@ int micro_sign(TEEC_Session *sess, const unsigned char *message, unsigned char *
         return -1;
     }
     printf("Signature generated successfully!\n");
-    printf("Signature: ");
-    for (int i = 0; i < 3; i++) {
-        printf("%02X ", signature[i]);
-    }
-    printf("\n");
     return 0;
 }
 

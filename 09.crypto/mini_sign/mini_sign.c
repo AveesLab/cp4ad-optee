@@ -52,6 +52,11 @@ static void derive_rsa(const unsigned char priv[2], uint32_t *n, uint32_t *d) {
         uint32_t q = (seed & 0x0FFF) | 0x0800;
         while (!is_prime(q)) q++;
 
+        if (p == q) {
+            seed++;
+            continue;
+        }
+
         *n = p * q;
         uint32_t phi = (p - 1) * (q - 1);
         int32_t dinv = modinv32(17, phi);
@@ -107,7 +112,7 @@ int micro_verify(const unsigned char message[5], const unsigned char pub[3], con
 
 int main(void) {
     unsigned char message[5] = {0x11, 0x22, 0x33, 0x44, 0x55};
-    unsigned char priv[2]   = {0xAB, 0xCD};
+    unsigned char priv[2]   = {0xAA, 0xAA};
     unsigned char pub[3];
     unsigned char sig[3];
     unsigned char hash[3];
