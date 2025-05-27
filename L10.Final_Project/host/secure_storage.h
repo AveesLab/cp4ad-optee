@@ -11,5 +11,6 @@
 int save_object(TEEC_Session *sess, const char *key);
 int load_object(TEEC_Session *sess, const char *key);
 int delete_object(TEEC_Session *sess, const char *key);
+int save_hex_object(TEEC_Session *sess, const unsigned char *key);
 
 #endif // SECURE_STORAGE_H

@@ -3,7 +3,6 @@
 #include <string.h>
 
 #define BLOCK_SIZE 5
-#define KEY_SIZE 5
 
 // 5바이트 (40비트) 키
 uint64_t key = 0xABCDE12345;  // 상위 3바이트 무시됨

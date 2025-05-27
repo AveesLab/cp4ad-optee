@@ -30,3 +30,12 @@ int close_port()
     close(soc);
     return 0;
 }
+
+void write_port(int can_id, struct can_frame frame, unsigned char signature[3]){
+    frame.can_id = can_id;
+    frame.can_dlc = 8;
+    for (int i = 5; i < 8; i++){
+        frame.data[i] = signature[i-5];
+    }
+    ssize_t nbytes1 = write(soc, &frame, sizeof(struct can_frame));
+}

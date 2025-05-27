@@ -15,42 +15,27 @@ int main(int argc, char *argv[]) {
     TEEC_UUID uuid = {0x4014bf39, 0x668c, 0x4253, {0x90, 0xb9, 0x70, 0x4b, 0x82, 0x57, 0xd1, 0x29}};
     uint32_t origin;
 
-    printf("Secure Storage Example\n\n");
     TEEC_InitializeContext(NULL, &ctx);
-    printf("TEEC_InitializeContext\n\n");
     TEEC_OpenSession(&ctx, &sess, &uuid, TEEC_LOGIN_PUBLIC, NULL, NULL, &origin);
-    printf("TEEC_OpenSession\n\n");
     
     /////////////////////////
     // secure_storage TEST //
     /////////////////////////
-    // save_object(&sess, "object_test");
+    save_object(&sess, "object_test");
 
-    // load_object(&sess, "object_test");
+    load_object(&sess, "object_test");
 
-    // delete_object(&sess, "object_test");
-
-    //////////////////////
-    // print_bytes TEST //
-    //////////////////////
-    // unsigned char id[3] = {0x11, 0x22, 0x33};
-    // print_bytes(id, 3);
-
-    //////////////////////////
-    // string_to_bytes TEST //
-    // bytes_to_string TEST //
-    //////////////////////////
-    // unsigned char *public_key = "0x12AB";
-    // unsigned char public_key_byte[2];
-    // string_to_bytes(public_key, public_key_byte);
-    // print_bytes(public_key_byte, 2);
-
-    // unsigned char public_key_str[7];
-    // bytes_to_string(public_key_byte, public_key_str);
-    // printf("Public key string: %s\n", public_key_str);
+    delete_object(&sess, "object_test");
 
     
-    // set_whitelist(&sess);
+    set_whitelist(&sess);
+    int check = check_whitelist(&sess, 0x123);
+    if (check) {
+        printf("can_id is valid");
+    }
+    eles {
+        printf("can_id is invalid");
+    }
     set_priv_key(&sess);
     printf("\n");
 

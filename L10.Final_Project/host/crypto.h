@@ -15,6 +15,7 @@ void string_to_bytes(const char in[7], char out[2]);
 void bytes_to_string(const char in[2], char out[7]);
 void print_bytes(const unsigned char *bytes, size_t len);
 int set_whitelist(TEEC_Session *sess);
+int check_whitelist(TEEC_Session *sess, const char *can_id);
 int set_priv_key(TEEC_Session *sess);
 int generate_public_key(TEEC_Session *sess, unsigned char *public_key);
 int micro_sign(TEEC_Session *sess, const unsigned char *message, unsigned char *signature);

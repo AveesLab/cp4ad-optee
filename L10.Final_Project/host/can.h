@@ -19,5 +19,6 @@ int read_can_port;
 int open_port(const char *port);
 void read_port(int can_id);
 int close_port();
+void write_port(int can_id, struct can_frame frame, unsigned char signature[3]);
 
 #endif

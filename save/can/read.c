@@ -46,8 +46,9 @@ void read_port(int can_id)
     struct can_frame frame;
     frame.can_dlc = 8;
     int recvbytes = 0;
+    printf("dsdsdsds\n");
     while(1)
-    {
+    {   printf("dcc111111\n");
         struct timeval timeout = {1, 0};
         fd_set readSet;
         FD_ZERO(&readSet);
@@ -77,8 +78,9 @@ int close_port()
 }
 int main(void)
 {
-    
+    printf("dcc\n");
     open_port("can0");
+    printf("dcc\n");
     read_port(0x123);
    
     return 0;
