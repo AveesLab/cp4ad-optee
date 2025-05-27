@@ -51,21 +51,19 @@ int load_object(TEEC_Session *sess, const char *key) {
     size_t data_len = 0;
 
     memset(&op, 0, sizeof(op));
-    // write here - setting op params // 
-    op.
-    op.
-    op.
-    op.
-    op.
-    //
+    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_INPUT, TEEC_MEMREF_TEMP_OUTPUT, TEEC_NONE, TEEC_NONE);
+    op.params[0].tmpref.buffer = key;
+    op.params[0].tmpref.size   = key_len;
+    op.params[1].tmpref.buffer = data;
+    op.params[1].tmpref.size   = data_len;
 
-    // write here - TEEC_InvokeCommand() //
-
-    //
-
+    res = TEEC_InvokeCommand(sess, CMD_LOAD, &op, &origin);
     data_len = op.params[1].tmpref.size;
-
-    if (data_len == 0) {
+    if (res != TEEC_SUCCESS) {
+        printf("Error loading object: %x\n", res);
+        return -1;
+    }
+    else if (data_len == 0) {
         printf("Object(%s) not found!\n", key);
     }
     else {
@@ -85,22 +83,24 @@ int delete_object(TEEC_Session *sess, const char *key) {
 
     size_t key_len = strlen(key);
     memset(&op, 0, sizeof(op));
-    // write here - setting op params // 
-    op.
-    op.
-    op.
-    //
+    op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_TEMP_INPUT, TEEC_NONE, TEEC_NONE, TEEC_NONE);
+    op.params[0].tmpref.buffer = (void *)key;
+    op.params[0].tmpref.size   = key_len;
 
-    // write here - TEEC_InvokeCommand() //
-
-    //
-    printf("Object(%s) deleted successfully!\n", key);
-    printf("Object name           : %s\n", key);
-    printf("Object name length    : %zu\n", key_len);
+    res = TEEC_InvokeCommand(sess, CMD_DELETE, &op, &origin);
+    if (res != TEEC_SUCCESS) {
+        printf("Error deleting object: %x\n", res);
+        return -1;
+    }
+    else {
+        printf("Object(%s) deleted successfully!\n", key);
+        printf("Object name           : %s\n", key);
+        printf("Object name length    : %zu\n", key_len);
+    }
     return 0;
 }
 
-int save_hex_object(TEEC_Session *sess, const char *key) {
+int save_hex_object(TEEC_Session *sess, const unsigned char *key) {
     TEEC_Result res;
     TEEC_Operation op;
     uint32_t origin;

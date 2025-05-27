@@ -5,7 +5,7 @@ LDADD += -lteec -L$(OPTEE_CLIENT_EXPORT)/lib
 
 # 소스 파일 명시
 MAIN_SRC := main.c
-OTHER_SRCS := secure_storage.c crypto.c # 여기에 필요한 .c 파일을 직접 명시
+OTHER_SRCS := secure_storage.c crypto.c can.c # 여기에 필요한 .c 파일을 직접 명시
 
 # 오브젝트 파일로 변환
 MAIN_OBJ := $(O)/main.o
